@@ -27,6 +27,15 @@ namespace VR_Prototype
             usedPotionsQueue.Enqueue(potion);
         }
 
+        public GameObject InstantiatePotion(int potionID, Vector3 pos, Quaternion rot)
+        {
+            throw new System.Exception("not implemented");
+        }
+
+        public GameObject InstantiatePotion(PotionNames potionID, Vector3 pos, Quaternion rot)
+        {
+            throw new System.Exception("not implemented");
+        }
 
         void Update()
         {

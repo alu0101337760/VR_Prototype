@@ -6,6 +6,6 @@ namespace VR_Prototype
     public struct PotionComponents
     {
        public Material potionMaterial;
-       public string potionBehaviourName;
+       public PotionNames potion;
     }
 }
