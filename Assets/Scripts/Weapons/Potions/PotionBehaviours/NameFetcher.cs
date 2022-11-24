@@ -1,27 +1,32 @@
 using System.IO;
 using System.Reflection;
 using UnityEditor;
+using UnityEngine;
 
-public class PotionNameRecovery : Editor
+public class PotionNameRecovery
 {
-    private string enumText = @"namespace VR_Prototype 
+    private static string enumText = @"namespace VR_Prototype 
 {
 public enum PotionNames
-    {\n";
+    {
+";
 
 
     [InitializeOnEnterPlayMode]
-    public void RecoverPotionNames()
+    public static void RecoverPotionNames(EnterPlayModeOptions options)
     {
-        string dirName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        string dirName = Path.GetDirectoryName(Directory.GetCurrentDirectory());
+        dirName += "\\VR_Prototype\\Assets\\Scripts\\Weapons\\Potions\\PotionBehaviours";
         DirectoryInfo directory = new DirectoryInfo(dirName);
         FileInfo[] files = directory.GetFiles("*.cs");
 
         foreach (FileInfo file in files)
         {
-            enumText += file.Name.Replace(".cs", "") + ",\n";
+            if (file.Name != "NameFetcher.cs")
+            {
+                enumText += file.Name.Replace(".cs", "") + ",\n";
+            }
         }
-
 
         enumText = enumText.Remove(enumText.Length - 1);
         enumText += @"

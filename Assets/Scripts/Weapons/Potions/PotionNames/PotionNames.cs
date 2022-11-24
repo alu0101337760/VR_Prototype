@@ -1,9 +1,7 @@
-
-namespace VR_Prototype
+namespace VR_Prototype 
 {
-    public enum PotionNames
+public enum PotionNames
     {
-
+PotionA,
     }
 }
-
