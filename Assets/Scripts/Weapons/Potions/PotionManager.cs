@@ -5,9 +5,11 @@ namespace VR_Prototype
 {
     public class PotionManager : MonoBehaviour
     {
-
+        
         public static PotionManager instance { get; private set; }
         public static Queue<Potion> usedPotionsQueue;
+
+        private static PotionComponentsList potionComponents;
 
         private Potion currentPotion;
 
@@ -20,12 +22,12 @@ namespace VR_Prototype
         }
 
 
-        public void AddPotionActivation(Potion potion)
+        public void AddUsedPotion(Potion potion)
         {
             usedPotionsQueue.Enqueue(potion);
         }
 
-        // Update is called once per frame
+
         void Update()
         {
 
