@@ -24,7 +24,7 @@ public enum PotionNames
         {
             if (file.Name != "NameFetcher.cs")
             {
-                enumText += file.Name.Replace(".cs", "") + ",\n";
+                enumText += "\t\t" + file.Name.Replace(".cs", "") + ",\n";
             }
         }
 
