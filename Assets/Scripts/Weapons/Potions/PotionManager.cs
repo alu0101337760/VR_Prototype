@@ -5,10 +5,11 @@ namespace VR_Prototype
 {
     public class PotionManager : MonoBehaviour
     {
-        
-        public static PotionManager instance { get; private set; }
-        public static Queue<Potion> usedPotionsQueue;
 
+        public static PotionManager instance { get; private set; }
+        public GameObject potionPrefab;
+
+        private static Queue<Potion> usedPotionsQueue;
         private static PotionComponentsList potionComponents;
 
         private Potion currentPotion;
@@ -27,14 +28,30 @@ namespace VR_Prototype
             usedPotionsQueue.Enqueue(potion);
         }
 
+        private GameObject CreateNewPotion(int potionID, Vector3 pos, Quaternion rot)
+        {
+            GameObject newPotion = Instantiate(potionPrefab, pos, rot);
+            PotionComponents potionComponent = potionComponents.potionComponents[potionID];
+
+            newPotion.AddComponent(potionComponent.potionType);
+            
+            if (potionComponent.potionFlask != null)
+            {
+                newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
+            }
+            newPotion.GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
+
+            return newPotion;
+        }
+
         public GameObject InstantiatePotion(int potionID, Vector3 pos, Quaternion rot)
         {
-            throw new System.Exception("not implemented");
+            return CreateNewPotion(potionID, pos, rot);
         }
 
         public GameObject InstantiatePotion(PotionNames potionID, Vector3 pos, Quaternion rot)
         {
-            throw new System.Exception("not implemented");
+            return CreateNewPotion((int)potionID, pos, rot);
         }
 
         void Update()
