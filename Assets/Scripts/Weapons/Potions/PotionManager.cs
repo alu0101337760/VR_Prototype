@@ -8,17 +8,18 @@ namespace VR_Prototype
 
         public static PotionManager instance { get; private set; }
         public GameObject potionPrefab;
+        public PotionComponentsList potionComponents;
 
         private static Queue<Potion> usedPotionsQueue;
-        private static PotionComponentsList potionComponents;
 
         private Potion currentPotion;
 
-        private void Start()
+        private void Awake()
         {
             if (PotionManager.instance == null)
             {
                 PotionManager.instance = this;
+                usedPotionsQueue = new Queue<Potion>();
             }
         }
 
@@ -34,7 +35,7 @@ namespace VR_Prototype
             PotionComponents potionComponent = potionComponents.potionComponents[potionID];
 
             newPotion.AddComponent(potionComponent.potionType);
-            
+
             if (potionComponent.potionFlask != null)
             {
                 newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
