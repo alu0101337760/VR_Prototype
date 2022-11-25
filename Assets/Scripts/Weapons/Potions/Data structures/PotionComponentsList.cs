@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VR_Prototype
 {
-    [CreateAssetMenu(fileName = "newPotionList", menuName = "ScriptableObjects/PotionList", order = 1)]
+    [CreateAssetMenu(fileName = "newPotionComponentsList", menuName = "ScriptableObjects/PotionComponentsList", order = 1)]
     public class PotionComponentsList : ScriptableObject
     {
         [SerializeField]
