@@ -1,4 +1,5 @@
 using System.IO;
+using System;
 using System.Reflection;
 using UnityEditor;
 using System.Collections.Generic;
@@ -23,9 +24,12 @@ public enum PotionNames
                 if (componentList[i].potionName.ToString() == potName)
                 {
                     System.Type testtype = System.Type.GetType(potName);
-                    componentList[i] = new PotionComponents(componentList[i],  System.Type.GetType(potName)); ;
+                    componentList[i] = new PotionComponents(componentList[i],  System.Type.GetType(potName));
+                    return;
                 }
             }
+            Type testtype = Type.GetType(potName);
+            componentList.Add(new PotionComponents((PotionNames)Enum.Parse(typeof(PotionNames), potName), Type.GetType(potName)));
 
         }
 
@@ -43,10 +47,7 @@ public enum PotionNames
                 string potName = "";
                 if (file.Name != "NameFetcher.cs")
                 {
-                    potName = file.Name.Replace(".cs", "");
-                    
-                    HandleTypeAssignation(potName);
-
+                    potName = file.Name.Replace(".cs", ""); 
                     enumText += "\t\t" + potName + ",\n";
                 }
             }
@@ -59,7 +60,11 @@ public enum PotionNames
             string targetDir = dirName.Replace("PotionBehaviours", "PotionNames");
 
             File.WriteAllText(targetDir + "\\PotionNames.cs", enumText);
-
+             
+            foreach (string name in Enum.GetNames(typeof(PotionNames)))
+            {
+                HandleTypeAssignation(name);
+            }
         }
 
     } }
