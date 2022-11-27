@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace VR_Prototype {
+namespace VR_PrototypeOld {
     public class EnemyPool : MonoBehaviour
     {
         public GameObject enemyPrefab;
         public Transform[] targetPoints;
-        private GameObject[] enemies;
+        private Enemy[] enemies;
         public int poolSize = 10;
 
-        void Start()
+        void Awake()
         {
-            enemies = new GameObject[poolSize];
+            enemies = new Enemy[poolSize];
             for (int i = 0; i < poolSize; i++)
             {
-                enemies[i] = Instantiate(enemyPrefab, transform);
-                enemies[i].SetActive(false);
+                enemies[i] = Instantiate(enemyPrefab, transform).GetComponent<Enemy>();
             }
         }
 
@@ -23,12 +22,13 @@ namespace VR_Prototype {
         {
             for (int i = 0; i < poolSize; i++)
             {
-                if (!enemies[i].activeInHierarchy)
+                if (!enemies[i].active)
                 {
-                    enemies[i].GetComponent<Enemy>().HP = 100;
-                    enemies[i].SetActive(true);
+                    enemies[i].HP = 100;
                     enemies[i].transform.position = transform.position;
-                    enemies[i].GetComponent<Enemy>().target = targetPoints[Random.Range(0, targetPoints.Length)];
+                    //enemies[i].UpdatePath(targetPoints[Random.Range(0, targetPoints.Length)]);
+                    enemies[i].active = true;
+                    enemies[i].gameObject.SetActive(true);
                     break;
                 }
             }
