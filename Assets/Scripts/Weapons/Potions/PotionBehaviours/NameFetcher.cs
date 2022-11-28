@@ -16,30 +16,29 @@ public enum PotionNames
     {
 ";
 
-
-        private static void HandleTypeAssignation(string potName)
+        private static void HandleTypeAssignation(List<Type> types)
         {
             PotionComponentsList potionComponents = Resources.Load<PotionComponentsList>("TestPotionList");
             List<PotionComponents> componentList = potionComponents.potionComponents;
-            for (int i = 0; i < componentList.Count; i++)
+
+            for (int i = 0; i < types.Count; i++)
             {
-                if (componentList[i].potionName.ToString() == potName)
+                bool broken = false;
+                for (int j = 0; j < componentList.Count; j++)
                 {
-                    System.Type testType = System.Type.GetType(potName);
-                    componentList[i] = new PotionComponents(componentList[i], System.Type.GetType(potName));
-                    return;
+                    if (types[i].Name == componentList[j].potionName.ToString())
+                    {
+                        componentList[j] = new PotionComponents(componentList[i], types[i]);
+                        broken = true;
+                        break;
+                    }
+                }
+                if (!broken)
+                {
+
+                    componentList.Add(new PotionComponents((PotionNames)Enum.Parse(typeof(PotionNames), types[i].Name), types[i]));
                 }
             }
-            Type testtype = Type.GetType(potName);
-            componentList.Add(new PotionComponents((PotionNames)Enum.Parse(typeof(PotionNames), potName), Type.GetType(potName)));
-
-        }
-
-        private static void HandleTypeAssignation(List<Type> type)
-        {
-            PotionComponentsList potionComponents = Resources.Load<PotionComponentsList>("TestPotionList");
-            List<PotionComponents> componentList = potionComponents.potionComponents;
-
         }
 
 
@@ -68,41 +67,5 @@ public enum PotionNames
             HandleTypeAssignation(potionTypes);
 
         }
-
-        //        public static void RecoverPotionNames(EnterPlayModeOptions options)
-        //        {
-
-
-
-        //            string dirName = Path.GetDirectoryName(Directory.GetCurrentDirectory());
-        //            dirName += "\\VR_Prototype\\Assets\\Scripts\\Weapons\\Potions\\PotionBehaviours";
-        //            DirectoryInfo directory = new DirectoryInfo(dirName);
-        //            FileInfo[] files = directory.GetFiles("*.cs");
-
-        //            foreach (FileInfo file in files)
-        //            {
-        //                string potName = "";
-        //                if (file.Name != "NameFetcher.cs")
-        //                {
-        //                    potName = file.Name.Replace(".cs", ""); 
-        //                    enumText += "\t\t" + potName + ",\n";
-        //                }
-        //            }
-
-        //            enumText = enumText.Remove(enumText.Length - 1);
-        //            enumText += @"
-        //    }
-        //}
-        //";
-        //            string targetDir = dirName.Replace("PotionBehaviours", "PotionNames");
-
-        //            File.WriteAllText(targetDir + "\\PotionNames.cs", enumText);
-
-        //            foreach (string name in Enum.GetNames(typeof(PotionNames)))
-        //            {
-        //                HandleTypeAssignation(name);
-        //            }
-        //        }
-
     }
 }
