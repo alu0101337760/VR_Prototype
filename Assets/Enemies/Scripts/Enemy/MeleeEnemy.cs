@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 namespace VR_Prototype
 {
@@ -19,7 +18,7 @@ namespace VR_Prototype
                 currentTarget = target;
                 enemyMovement.UpdatePath(currentTarget.position);
             }
-            else isDancing = true;
+            else if (EnemyPool.instance.spawners.Contains(target.GetComponent<Spawner>().id)) EnemyPool.instance.SwitchObjective(this);
         }
 
         public override void OnPathInterrupted(Transform interrupter) {

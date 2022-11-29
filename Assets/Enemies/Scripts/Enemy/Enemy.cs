@@ -8,13 +8,19 @@ namespace VR_Prototype
     public abstract class Enemy : MonoBehaviour
     {
         public float HP = 100;
+        public float reach = 3f;
+        public float speed = 1f;
+        public float currentSpeed = 1f;
         public bool isDead = false;
-        protected Transform target;
+        public Transform target;
         protected Transform currentTarget;
         protected EnemyMovement enemyMovement;
-        protected virtual void Awake()
+        protected virtual void Start()
         {
+            Debug.Log("Enemy Start");
+            currentSpeed = 0;
             enemyMovement = GetComponent<EnemyMovement>();
+            gameObject.SetActive(false);
         }
         
         public virtual void Die()
@@ -34,23 +40,28 @@ namespace VR_Prototype
         
         public void Halt()
         {
-            enemyMovement.enabled = false;
+            currentSpeed = 0;
         }
 
         public void Resume()
         {
-            enemyMovement.enabled = true;
+            currentSpeed = speed;
         }
 
-        public virtual void SetObjective(Transform objective)
+        public virtual void SetObjective(Transform objective, Path path = null)
         {
+            currentSpeed = speed;
             target = objective;
             currentTarget = objective;
-            //enemyMovement.UpdatePath(currentTarget.position);
+            if (path == null) enemyMovement.UpdatePath(objective.position);
+            else enemyMovement.UpdatePath(objective.position, path);
         }
 
         public abstract void OnObjectiveComplete();
         public abstract void OnPathInterrupted(Transform interrupter);
-        public abstract void OnPathComplete();
+        public virtual void OnPathComplete() {
+            Halt();
+            if (EnemyPool.instance.spawners.Contains(target.GetComponent<Spawner>().id)) EnemyPool.instance.SwitchObjective(this);
+        }
     }
 }

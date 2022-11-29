@@ -7,9 +7,7 @@ namespace VR_Prototype
 {
     public class EnemyMovement : MonoBehaviour
     {
-        public float speed = 3f;
         public float nextWaypointDistance = .5f;
-        public float lastWaypointDistance = 2f;
         public Vector3 target;
         public Path path;
         private int currentWaypoint = 0;
@@ -19,15 +17,18 @@ namespace VR_Prototype
 
         private void Start()
         {
+            Debug.Log("EnemyMovement Start");
             seeker = GetComponent<Seeker>();
             behaviour = GetComponent<Enemy>();
         }
 
-        public void UpdatePath(Vector3 newTarget)
+        public void UpdatePath(Vector3 newTarget, Path path = null)
         {
             target = newTarget;
-            if (seeker.IsDone()) seeker.StartPath(transform.position, target, OnPathComplete);
+            if (path == null) seeker.StartPath(transform.position, target, OnPathComplete);
+            else OnPathComplete(path);
         }
+
 
         void OnPathComplete(Path p)
         {
@@ -41,9 +42,9 @@ namespace VR_Prototype
 
         void Update()
         {
+            if (path == null || behaviour.currentSpeed == 0) return;
             if (reachedEndOfPath) behaviour.OnPathComplete();
-            if (path == null) return;
-            if (currentWaypoint >= path.vectorPath.Count || Vector3.Distance(transform.position, target) < lastWaypointDistance)
+            if (currentWaypoint >= path.vectorPath.Count || Vector3.Distance(transform.position, target) < behaviour.reach)
             {
                 reachedEndOfPath = true;
                 return;
@@ -53,7 +54,7 @@ namespace VR_Prototype
                 reachedEndOfPath = false;
             }
             Vector3 direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(direction * behaviour.currentSpeed * Time.deltaTime);
             float distance = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
             if (distance < nextWaypointDistance)
             {
