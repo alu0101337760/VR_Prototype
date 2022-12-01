@@ -26,7 +26,10 @@ namespace VR_Prototype
         void Update()
         {
             waveTimer += Time.deltaTime;
-            if (waveTimer > timeBetweenWaves) StartWave();
+            if (waveTimer > timeBetweenWaves) {
+                StartWave();
+                waveTimer = 0f;
+            }
         }
     }
 }

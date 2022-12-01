@@ -23,7 +23,6 @@ namespace VR_Prototype
 
         void CalculatePath()
         {
-            Debug.Log("CalculatePath(" + id + ", " + currentTarget + ")");
             if (id == currentTarget) {
                 this.currentTarget++;
                 CalculatePath();

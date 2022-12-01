@@ -16,6 +16,7 @@ namespace VR_Prototype
         public Dictionary<(int,int), Path> paths = new Dictionary<(int, int), Path>();
         private List<GameObject> enemies;
         private int remainingEnemies = 0;
+        public float spawnRate = 1f;
         private void Start()
         {
             if (instance == null) instance = this;
@@ -58,7 +59,7 @@ namespace VR_Prototype
                 for (int i = 0; i < WaveManager.instance.waves[wave].x; i++)
                 {
                     SpawnEnemy(objectives[Random.Range(0, objectives.Count)]);
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(spawnRate);
                 }
             }
         }
