@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.OpenXR.Input;
 
 namespace VR_Prototype
 {
@@ -10,12 +12,19 @@ namespace VR_Prototype
         public float muzzleVelocity = 100;
         public float secondsOfCooldown = 1;
 
+        public float vibrationAmplitude = 1;
+        public float vibrationDuration = 1;
+
+
         private float shotTime = 0;
+
+        public ParticleSystem particleSystem;
 
         public void Shoot(ActivateEventArgs args)
         {
             if (Time.time - shotTime >= secondsOfCooldown)
             {
+                //OpenXRInput.SendHapticImpulse();
                 GameObject bulletShot = Instantiate(bullet, shotOrigin.position, Quaternion.Euler(shotOrigin.position));
                 bulletShot.GetComponent<Rigidbody>().AddForce(shotOrigin.forward * muzzleVelocity, ForceMode.Impulse);
                 shotTime = Time.time;
