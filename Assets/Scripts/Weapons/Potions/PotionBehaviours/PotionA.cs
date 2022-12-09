@@ -8,7 +8,7 @@ namespace VR_Prototype
     {
         protected override void HandlePotionEffect()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Potion Effect triggered yay");
         }
 
         private void Start()
