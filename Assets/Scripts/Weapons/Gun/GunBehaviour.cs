@@ -18,7 +18,7 @@ namespace VR_Prototype
 
         private float shotTime = 0;
 
-        public ParticleSystem particleSystem;
+        public ParticleSystem particles;
 
         public void Shoot(ActivateEventArgs args)
         {
