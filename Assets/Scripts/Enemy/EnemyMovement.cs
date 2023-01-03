@@ -5,30 +5,30 @@ using Pathfinding;
 
 namespace VR_Prototype
 {
+    [RequireComponent(typeof(Seeker))]
+    [RequireComponent(typeof(Enemy))]
     public class EnemyMovement : MonoBehaviour
     {
-        public float nextWaypointDistance = .5f;
-        public Vector3 target;
-        public Path path;
-        private int currentWaypoint = 0;
-        public bool reachedEndOfPath = false;
-        private Seeker seeker;
         private Enemy behaviour;
-
-        private void Start()
+        [HideInInspector]
+        public bool targetReached = false;
+        private Vector3 target;
+        public Path path;
+        private Seeker seeker;
+        private int currentWaypoint = 0;
+        private float nextWaypointDistance = .5f;
+        void Awake()
         {
-            Debug.Log("EnemyMovement Start");
             seeker = GetComponent<Seeker>();
             behaviour = GetComponent<Enemy>();
         }
 
-        public void UpdatePath(Vector3 newTarget, Path path = null)
+        // Update is called once per frame
+        public void UpdatePath(Transform newTarget)
         {
-            target = newTarget;
-            if (path == null) seeker.StartPath(transform.position, target, OnPathComplete);
-            else OnPathComplete(path);
+            target = newTarget.position;
+            seeker.StartPath(transform.position, target, OnPathComplete);
         }
-
 
         void OnPathComplete(Path p)
         {
@@ -36,22 +36,24 @@ namespace VR_Prototype
             {
                 path = p;
                 currentWaypoint = 0;
-                reachedEndOfPath = false;
+                targetReached = false;
             }
         }
 
-        void Update()
-        {
+        public void MovementUpdate() {
             if (path == null || behaviour.currentSpeed == 0) return;
-            if (reachedEndOfPath) behaviour.OnPathComplete();
+            if (targetReached) {
+                behaviour.OnTargetReached();
+                return;
+            }
             if (currentWaypoint >= path.vectorPath.Count || Vector3.Distance(transform.position, target) < behaviour.reach)
             {
-                reachedEndOfPath = true;
+                targetReached = true;
                 return;
             }
             else
             {
-                reachedEndOfPath = false;
+                targetReached = false;
             }
             Vector3 direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
             transform.Translate(direction * behaviour.currentSpeed * Time.deltaTime);

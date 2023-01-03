@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace VR_Prototype
 {
-    public class WaveManager : MonoBehaviour
+    public class WaveManager2 : MonoBehaviour
     {
-        static public WaveManager instance { get; private set; }
+        static public WaveManager2 instance { get; private set; }
         public int wave = 0;
         public List<Vector3Int> waves = new List<Vector3Int>();
         public float timeBetweenWaves = 3f;
