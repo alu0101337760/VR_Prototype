@@ -51,10 +51,10 @@ namespace VR_Prototype
     }
 
     public void RemoveItem(GameObject gameObject)
-    {    
-      // HAY QUE IMPLEMENTAR ESTE MÉTODO
-      // Se desactiva el gameObject pasado como argumento, se le quita la malla (opcional),
-      // y se mueve a la zona de los objetos no instanciados
+    {
+      gameObject.SetActive(false);
+      // MOVER A LA ZONA DONDE ESTÁN LOS OBJETOS NO INSTANCIADOS
+      // En principio no debería hacer faltar quitar la malla, porque no se va a ver
     }
 
   }

@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - id: 0
-    name: A
+    name: Bone
     mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     material: {fileID: 0}
   - id: 1
-    name: B
+    name: Magic plant
     mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     material: {fileID: 0}
   - id: 2
-    name: C
+    name: Magic crystal
+    mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    material: {fileID: 0}
+  - id: 2
+    name: Cursed emblem
     mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     material: {fileID: 0}
