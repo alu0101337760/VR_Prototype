@@ -16,16 +16,16 @@ MonoBehaviour:
   - id: 0
     name: Bone
     mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: 3822da428db67bc4f91eae28d8315ccc, type: 2}
   - id: 1
     name: Magic plant
     mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: 863174fbef875425ca78e4c949f12318, type: 2}
   - id: 2
     name: Magic crystal
-    mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 0}
+    mesh: {fileID: 4579672400369159531, guid: 865b9a3d47335a64f94e6c3776c2731c, type: 3}
+    material: {fileID: 2100000, guid: 3cd3b2a8526b6364ea4402318eeda711, type: 2}
   - id: 2
-    name: Cursed emblem
+    name: Monster soul
     mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     material: {fileID: 0}

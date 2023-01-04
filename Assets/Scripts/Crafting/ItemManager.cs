@@ -31,6 +31,12 @@ namespace VR_Prototype
       }
     }
 
+    // ESTO ES SOLO PARA VER SI LOS OBJETOS SE INSTANCIAN BIEN
+    // void Start () 
+    // {
+    //   InstantiateItem(2, new Vector3(-9, 0, 0));
+    // }
+
     public void InstantiateItem(int requiredId, Vector3 newPosition)
     {
       int requiredIndex = itemList.itemList.FindIndex(x => x.id.Equals(requiredId));
@@ -40,7 +46,11 @@ namespace VR_Prototype
             gameObject.SetActive(true);
             MeshFilter objectMesh = gameObject.GetComponent<MeshFilter>();
             Mesh newMesh = itemList.itemList[requiredIndex].mesh;
-            objectMesh.sharedMesh = newMesh;
+            objectMesh.mesh = newMesh;
+
+            Renderer objectRenderer = gameObject.GetComponent<Renderer>();
+            objectRenderer.sharedMaterial = itemList.itemList[requiredIndex].material;
+
             Transform tf = gameObject.GetComponent<Transform>();
             tf.position = newPosition;
 
