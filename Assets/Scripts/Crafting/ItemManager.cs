@@ -12,7 +12,7 @@ namespace VR_Prototype
     public int instantiatedItems;
     public List<GameObject> objectList;
 
-    // private static attribute that contains the only instance of ItemManager
+    // public static attribute that contains the only instance of ItemManager
     public static ItemManager instance;
     
     // empty constructor
