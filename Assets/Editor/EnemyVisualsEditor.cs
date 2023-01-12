@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+
 namespace VR_Prototype
 {
     [CustomEditor(typeof(EnemyVisuals))]
     [CanEditMultipleObjects] // only if you handle it properly
-    public class EnemyVisualsEditor : UnityEditor.Editor
+    public class EnemyVisualsEditor : Editor
     {
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector ();
+            DrawDefaultInspector();
             if (GUILayout.Button("Attack", EditorStyles.miniButton))
             {
                 ((EnemyVisuals)this.target).Attack();
