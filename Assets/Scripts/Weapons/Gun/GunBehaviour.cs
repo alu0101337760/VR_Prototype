@@ -11,7 +11,8 @@ namespace VR_Prototype
         public Transform shotOrigin;
         public float muzzleVelocity = 100;
         public float secondsOfCooldown = 1;
-        
+
+        [Range(0.1f,1)]
         public float vibrationAmplitude = 1;
         public float vibrationDuration = 1;
 
@@ -21,10 +22,18 @@ namespace VR_Prototype
         
         public ParticleSystem particles;
 
+   
+
         public void Shoot(ActivateEventArgs args)
-        {  
+        {
+            
             if (Time.time - shotTime >= secondsOfCooldown)
             {
+                if(args.interactorObject is XRBaseControllerInteractor controllerInteractor)
+                {
+                    TriggerHaptic(controllerInteractor.xrController);
+                }
+                
                 Debug.Log(layerMask);
 
                 //particles.Play();
@@ -33,10 +42,14 @@ namespace VR_Prototype
                     Debug.Log(hit.transform.gameObject.name);
                     Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
                     EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
-                }
-                //OpenXRInput.SendHapticImpulse();              
+                }            
                 shotTime = Time.time;
             }
+        }
+        
+        private void TriggerHaptic(XRBaseController controller)
+        {
+            controller.SendHapticImpulse(vibrationAmplitude, vibrationDuration);
         }
 
     }
