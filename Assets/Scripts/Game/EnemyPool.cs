@@ -79,6 +79,16 @@ namespace VR_Prototype
             enemies[id].SetObjective(interestPoints[objective]);
         }
 
+        public void EnemyHit(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void EnemyHit(int[] ids )
+        {
+            throw new System.NotImplementedException();
+            
+            }
         public void KillEnemy(int id)
         {
             enemies[id].Die();
