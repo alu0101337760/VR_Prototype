@@ -22,8 +22,6 @@ namespace VR_Prototype
         
         public ParticleSystem particles;
 
-   
-
         public void Shoot(ActivateEventArgs args)
         {
             
@@ -33,9 +31,6 @@ namespace VR_Prototype
                 {
                     TriggerHaptic(controllerInteractor.xrController);
                 }
-                
-                Debug.Log(layerMask);
-
                 //particles.Play();
                 if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
