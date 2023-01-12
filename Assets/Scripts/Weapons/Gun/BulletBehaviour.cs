@@ -8,7 +8,6 @@ namespace VR_Prototype
     {
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Bullet collided with something, yay");
             Destroy(gameObject);
         }
     }

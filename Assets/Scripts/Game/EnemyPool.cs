@@ -39,6 +39,7 @@ namespace VR_Prototype
             {
                 if (!spawners.Contains(i)) objectives.Add(i);
             }
+            
         }
 
         public IEnumerator SpawnWave(int wave)
