@@ -6,7 +6,7 @@ namespace VR_Prototype
   [System.Serializable]
   public class Recipe
   {
-    public List<ItemAttributes> input;
+    public List<int> ingredients;
     public string potionName;
     public int potion;
 
@@ -15,9 +15,9 @@ namespace VR_Prototype
       return potion;
     }
 
-    public List<ItemAttributes> GetList() 
+    public List<int> GetList() 
     {
-      return input;
+      return ingredients;
     }
 
   }

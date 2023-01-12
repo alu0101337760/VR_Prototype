@@ -13,9 +13,21 @@ MonoBehaviour:
   m_Name: recipeList
   m_EditorClassIdentifier: 
   recipeList:
-  - input: []
-    potionName: 
+  - ingredients: 000000000000000000000000
+    potionName: Fire potion
     potion: 0
-  - input: []
-    potionName: 
-    potion: 0
+  - ingredients: 0100000001000000
+    potionName: Lightning potion
+    potion: 1
+  - ingredients: 01000000010000000200000002000000
+    potionName: Poison potion
+    potion: 2
+  - ingredients: 020000000200000003000000
+    potionName: Earth potion
+    potion: 3
+  - ingredients: 010000000100000003000000
+    potionName: Ice potion
+    potion: 4
+  - ingredients: 0000000002000000030000000300000003000000
+    potionName: Cursed potion
+    potion: 5

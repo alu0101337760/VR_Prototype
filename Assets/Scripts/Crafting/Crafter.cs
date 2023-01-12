@@ -3,10 +3,16 @@ using UnityEngine;
 
 namespace VR_Prototype 
 {
-    public class Crafter
+    public class Crafter : MonoBehaviour
     {
-        private RecipeList recipeList;
-        private InventoryManager inventoryManager;
+        public RecipeList recipeList;
+        public InventoryManager inventoryManager;
+
+        // public void Start() 
+        // {
+        //     Craft(5);
+        //     inventoryManager.PrintInventory();
+        // }
 
         public Potion Craft(int potionIndex) 
         {
@@ -21,9 +27,8 @@ namespace VR_Prototype
             }
 
             Dictionary<int, int> ingredients = new Dictionary<int, int>();
-            foreach (ItemAttributes item in chosenRecipe.GetList())
+            foreach (int itemID in chosenRecipe.GetList())
             {
-                int itemID = item.id;
                 if (ingredients.ContainsKey(itemID)) 
                 {
                     ingredients[itemID] += 1;
@@ -33,20 +38,22 @@ namespace VR_Prototype
                 }
             }
 
-            bool craftable = inventoryManager.CheckIfItemsAreInInventory(ingredients);
+            bool craftable = InventoryManager.instance.CheckIfItemsAreInInventory(ingredients);
             if (craftable) 
             {
                 // aquí se instancia la poción con el PotionManager
+                Debug.Log("Poción completada");
 
-                foreach (ItemAttributes item in chosenRecipe.GetList()) 
+                foreach (int itemID in chosenRecipe.GetList()) 
                 {
-                    inventoryManager.RemoveItem(item.id);
+                    InventoryManager.instance.RemoveItem(itemID);
                 }
 
                 return null; // cambiar por la poción instanciada
 
             } else 
             {
+                Debug.Log("Faltan ingredientes");
                 return null;
             }
         }
