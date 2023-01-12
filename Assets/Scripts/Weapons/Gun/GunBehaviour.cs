@@ -18,7 +18,12 @@ namespace VR_Prototype
 
         private float shotTime = 0;
 
-        public ParticleSystem particles;
+        private GunVFX vfx;
+
+        private void Start()
+        {
+            vfx = GetComponentInChildren<GunVFX>();
+        }
 
         public void Shoot(ActivateEventArgs args)
         {
@@ -28,8 +33,8 @@ namespace VR_Prototype
                 GameObject bulletShot = Instantiate(bullet, shotOrigin.position, Quaternion.Euler(shotOrigin.position));
                 bulletShot.GetComponent<Rigidbody>().AddForce(shotOrigin.forward * muzzleVelocity, ForceMode.Impulse);
                 shotTime = Time.time;
+                vfx.Shoot();
             }
         }
-
     }
 }
