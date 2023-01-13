@@ -41,7 +41,7 @@ namespace VR_Prototype
             //     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
             // }
             
-            newPotion.GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
+            newPotion.transform.Find("Potion").GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
 
             return newPotion;
         }

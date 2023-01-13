@@ -42,7 +42,7 @@ namespace VR_Prototype
                             break;
                         }
                     }
-                    Debug.Log("Crafted potion " + potion);
+                    PotionManager.instance.InstantiatePotion(0, new Vector3(-6, 2, -5), Quaternion.identity);
                     ResetCauldron();
                 }
             }
