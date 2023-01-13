@@ -29,6 +29,7 @@ namespace VR_Prototype
         }
 
         void Update() {
+            if (!active) return;
             if (!isAttacking && currentTarget != null) movement.MovementUpdate();
             else if (isAttacking) Attack();
         }
@@ -36,6 +37,8 @@ namespace VR_Prototype
         public void Activate()
         {
             active = true;
+            isAttacking = false;
+            health = 100;
             gameObject.SetActive(true);
             visuals.Reset();
         }
@@ -117,6 +120,7 @@ namespace VR_Prototype
         override public void Die() {
             visuals.Die();
             active = false;
+            EnemyPool.instance.KillEnemy(id);
         }
     }
 }

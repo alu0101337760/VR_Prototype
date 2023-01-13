@@ -8,6 +8,9 @@ namespace VR_Prototype
         static public EnemyPool instance { get; private set; }
 
         public int poolSize = 10;
+
+        [SerializeField]
+        private int activeEnemies = 0;
         public GameObject enemyPrefab;
         public List<Enemy> enemies = new List<Enemy>();
 
@@ -19,7 +22,10 @@ namespace VR_Prototype
         void Start()
         {
             if (instance == null) instance = this;
-            else Debug.LogError("More than one EnemyPool in scene");
+            else {
+                Debug.LogError("More than one EnemyPool in scene");
+                return;
+            }
             enemies = new List<Enemy>();
             for (int i = 0; i < poolSize; i++)
             {
@@ -42,9 +48,13 @@ namespace VR_Prototype
             
         }
 
-        public IEnumerator SpawnWave(int wave)
+        public IEnumerator SpawnWave(int enemyNumber, float delay = 0.5f)
         {
-            yield return null;
+            for (int i = 0; i < enemyNumber; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(delay);
+            }
         }
 
         [ContextMenu("Spawn Enemy")]
@@ -61,6 +71,7 @@ namespace VR_Prototype
                     enemies[i].transform.position = interestPoints[spawner].position;
                     enemies[i].Activate();
                     enemies[i].SetObjective(interestPoints[objective]);
+                    activeEnemies++;
                     return;
                 }
             }
@@ -71,6 +82,7 @@ namespace VR_Prototype
             if (id < 0 || id >= interestPoints.Count) return;
             if (objectives.Contains(id)) objectives.Remove(id);
             if (!spawners.Contains(id)) spawners.Add(id);
+            if (objectives.Count == 0) GameManager.instance.GameOver();
         }
 
         public void SwitchObjective(int id)
@@ -80,29 +92,29 @@ namespace VR_Prototype
             enemies[id].SetObjective(interestPoints[objective]);
         }
 
-        public void EnemyHit(int id)
+        public void EnemyHit(int id, float damage = 50)
         {
-            throw new System.NotImplementedException();
+            enemies[id].TakeDamage(damage);
         }
 
-        public void EnemyHit(int[] ids )
-        {
-            throw new System.NotImplementedException();
-            
-            }
-        public void KillEnemy(int id)
-        {
-            enemies[id].Die();
-        }
-
-        public void KillEnemy(int[] ids)
+        public void EnemyHit(int[] ids, float damage = 50)
         {
             for (int i = 0; i < ids.Length; i++)
             {
-                KillEnemy(ids[i]);
+                enemies[ids[i]].TakeDamage(damage);
             }
         }
 
+        public void KillEnemy(int id)
+        {
+            if (enemies[id].active) enemies[id].Die();
+            else {
+                activeEnemies--;
+                if (activeEnemies <= 0) StartCoroutine(GameManager.instance.OnWaveEnded());
+            }
+        }
+
+        [ContextMenu("Kill All Enemies")]
         public void KillAllEnemies()
         {
             for (int i = 0; i < enemies.Count; i++)
