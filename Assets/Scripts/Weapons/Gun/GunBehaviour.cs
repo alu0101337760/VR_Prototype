@@ -7,48 +7,58 @@ namespace VR_Prototype
 {
     public class GunBehaviour : MonoBehaviour
     {
-        public GameObject bullet;
+        public ParticleSystem[] particles;
         public Transform shotOrigin;
-        public float muzzleVelocity = 100;
-        public float secondsOfCooldown = 1;
 
-        [Range(0.1f,1)]
+
+        [Range(0.1f, 1)]
         public float vibrationAmplitude = 1;
         public float vibrationDuration = 1;
 
-        private float shotTime = 0;
-        
+        private bool alreadyShot = false;
+
         int layerMask = 1 << 3;
-        
-        public ParticleSystem particles;
+
         public Rigidbody rb;
 
-        private void Start()
+        private void Awake()
         {
-            rb = this.gameObject.GetComponent<Rigidbody>();
+            rb = gameObject.GetComponent<Rigidbody>();
         }
 
+        public void OnEnable()
+        {
+            alreadyShot = false;
+        }
+
+        public void PlayEffects()
+        {
+            for (int i = 0; i < particles.Length; i++)
+            {
+                particles[i].Play();
+            }
+        }
 
         public void Shoot(ActivateEventArgs args)
         {
-            
-            if (Time.time - shotTime >= secondsOfCooldown)
+            if (!alreadyShot)
             {
-                if(args.interactorObject is XRBaseControllerInteractor controllerInteractor)
+                if (args.interactorObject is XRBaseControllerInteractor controllerInteractor)
                 {
                     TriggerHaptic(controllerInteractor.xrController);
                 }
-                //particles.Play();
+                PlayEffects();
                 if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
                     Debug.Log(hit.transform.gameObject.name);
                     Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
                     EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
-                }            
-                shotTime = Time.time;
+                }
+                alreadyShot = true;
             }
+
         }
-        
+
         private void TriggerHaptic(XRBaseController controller)
         {
             controller.SendHapticImpulse(vibrationAmplitude, vibrationDuration);
