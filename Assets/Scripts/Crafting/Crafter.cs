@@ -17,6 +17,7 @@ namespace VR_Prototype
         {
             numberOfItemsInCauldron = 0;
             cauldronContent = new List<int>();
+            itemsInCauldron = new List<GameObject>();
 
 
             // Craft(5);
@@ -31,6 +32,7 @@ namespace VR_Prototype
                 Debug.Log(collided.gameObject.name);
                 Debug.Log("Inserted item " + id);
                 cauldronContent.Add(id);
+                itemsInCauldron.Add(collided.gameObject);
                 
                 if (numberOfItemsInCauldron == 4) {
                     int potion = -1;
@@ -50,9 +52,9 @@ namespace VR_Prototype
         {
             numberOfItemsInCauldron = 0;
             cauldronContent.Clear();
-            // foreach (GameObject item in itemsInCauldron) {
-            //     ItemManager.instance.RemoveItem(item);
-            // }
+            foreach (GameObject item in itemsInCauldron) {
+                ItemManager.instance.RemoveItem(item);
+            }
         }
 
 

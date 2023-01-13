@@ -36,10 +36,11 @@ namespace VR_Prototype
 
             newPotion.AddComponent(potionComponent.potionType);
 
-            if (potionComponent.potionFlask != null)
-            {
-                newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
-            }
+            // if (potionComponent.potionFlask != null)
+            // {
+            //     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
+            // }
+            
             newPotion.GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
 
             return newPotion;
