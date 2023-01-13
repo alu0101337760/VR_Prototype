@@ -1,67 +1,126 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 namespace VR_Prototype
 {
-    public abstract class Enemy : MonoBehaviour
+    public class Enemy : Destructible
     {
-        public float HP = 100;
+        public int id = 0;
+        public bool active = false;
+        public Transform target;
+        public Transform currentTarget;
         public float reach = 3f;
         public float speed = 1f;
         public float currentSpeed = 1f;
-        public bool isDead = false;
-        public Transform target;
-        protected Transform currentTarget;
-        protected EnemyMovement enemyMovement;
-        protected virtual void Start()
+
+        public float attackDamage = 10f;
+        public float attackDelay = 1f;
+        private float attackTimer = 0f;
+        private bool isAttacking = false;
+        private EnemyMovement movement;
+        private EnemyVisuals visuals;
+
+        void Start()
         {
-            Debug.Log("Enemy Start");
-            currentSpeed = 0;
-            enemyMovement = GetComponent<EnemyMovement>();
-            gameObject.SetActive(false);
-        }
-        
-        public virtual void Die()
-        {
-            isDead = true;
+            movement = GetComponent<EnemyMovement>();
+            visuals = GetComponent<EnemyVisuals>();
             gameObject.SetActive(false);
         }
 
-        public void TakeDamage(float damage)
-        {
-            HP -= damage;
-            if (HP <= 0)
-            {
-                Die();
-            }
+        void Update() {
+            if (!active) return;
+            if (!isAttacking && currentTarget != null) movement.MovementUpdate();
+            else if (isAttacking) Attack();
         }
-        
+
+        public void Activate()
+        {
+            active = true;
+            isAttacking = false;
+            health = 100;
+            gameObject.SetActive(true);
+            visuals.Reset();
+        }
+
+        public void SetObjective(Transform objective)
+        {
+            if (objective == null) return;
+            currentSpeed = speed;
+            target = objective;
+            SetCurrentTarget(objective);
+        }
+
+        public void SetCurrentTarget(Transform objective)
+        {
+            if (objective == null) return;
+            currentTarget = objective;
+            movement.UpdatePath(objective);
+            Resume();
+        }
+
         public void Halt()
         {
+            visuals.Stop();
             currentSpeed = 0;
         }
 
         public void Resume()
         {
-            currentSpeed = speed;
+            if (!isAttacking) {
+                visuals.Walk();
+                currentSpeed = speed;
+            }
         }
 
-        public virtual void SetObjective(Transform objective, Path path = null)
+        public void OnTargetReached()
         {
-            currentSpeed = speed;
-            target = objective;
-            currentTarget = objective;
-            if (path == null) enemyMovement.UpdatePath(objective.position);
-            else enemyMovement.UpdatePath(objective.position, path);
+            Halt();
+            isAttacking = true;
+            if (currentTarget == target)
+            {
+                OnObjectiveReached();
+            }
         }
 
-        public abstract void OnObjectiveComplete();
-        public abstract void OnPathInterrupted(Transform interrupter);
-        public virtual void OnPathComplete() {
-            Halt();
-            if (EnemyPool.instance.spawners.Contains(target.GetComponent<Spawner>().id)) EnemyPool.instance.SwitchObjective(this);
+        public void OnObjectiveReached()
+        {
+        }
+
+        public void OnPathInterrupted(Transform interrupter)
+        {
+            if (interrupter == currentTarget) {
+                SetCurrentTarget(target);
+            }
+        }
+
+        public void OnObjectiveComplete()
+        {
+            isAttacking = false;
+            EnemyPool.instance.SwitchObjective(id);
+        }
+
+        private void Attack()
+        {
+            if (attackTimer > 0) attackTimer -= Time.deltaTime;
+            else
+            {
+                Destructible dest = currentTarget.GetComponent<Destructible>();
+                if (dest != null && dest.health > 0) {
+                    visuals.Attack();
+                    attackTimer = attackDelay;
+                    dest.TakeDamage(attackDamage);
+                }
+                else {
+                    OnObjectiveComplete();
+                }
+            }
+        }
+
+        override public void Die() {
+            visuals.Die();
+            active = false;
+            EnemyPool.instance.KillEnemy(id);
         }
     }
 }

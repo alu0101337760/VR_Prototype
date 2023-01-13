@@ -6,9 +6,10 @@ namespace VR_Prototype {
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Enemy")
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                other.gameObject.GetComponent<Enemy>().OnPathInterrupted(transform);
+                enemy.OnPathInterrupted(transform);
             }
         }
     }
