@@ -21,6 +21,13 @@ namespace VR_Prototype
         int layerMask = 1 << 3;
         
         public ParticleSystem particles;
+        public Rigidbody rb;
+
+        private void Start()
+        {
+            rb = this.gameObject.GetComponent<Rigidbody>();
+        }
+
 
         public void Shoot(ActivateEventArgs args)
         {
@@ -46,6 +53,5 @@ namespace VR_Prototype
         {
             controller.SendHapticImpulse(vibrationAmplitude, vibrationDuration);
         }
-
     }
 }
