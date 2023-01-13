@@ -12,29 +12,46 @@ namespace VR_Prototype
         public float muzzleVelocity = 100;
         public float secondsOfCooldown = 1;
 
+        [Range(0.1f,1)]
         public float vibrationAmplitude = 1;
         public float vibrationDuration = 1;
 
-
         private float shotTime = 0;
-
-        private GunVFX vfx;
+        
+        int layerMask = 1 << 3;
+        
+        public ParticleSystem particles;
+        public Rigidbody rb;
 
         private void Start()
         {
-            vfx = GetComponentInChildren<GunVFX>();
+            rb = this.gameObject.GetComponent<Rigidbody>();
         }
+
 
         public void Shoot(ActivateEventArgs args)
         {
+            
             if (Time.time - shotTime >= secondsOfCooldown)
             {
-                //OpenXRInput.SendHapticImpulse();
-                GameObject bulletShot = Instantiate(bullet, shotOrigin.position, Quaternion.Euler(shotOrigin.position));
-                bulletShot.GetComponent<Rigidbody>().AddForce(shotOrigin.forward * muzzleVelocity, ForceMode.Impulse);
+                if(args.interactorObject is XRBaseControllerInteractor controllerInteractor)
+                {
+                    TriggerHaptic(controllerInteractor.xrController);
+                }
+                //particles.Play();
+                if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
+                    EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
+                }            
                 shotTime = Time.time;
-                vfx.Shoot();
             }
+        }
+        
+        private void TriggerHaptic(XRBaseController controller)
+        {
+            controller.SendHapticImpulse(vibrationAmplitude, vibrationDuration);
         }
     }
 }
