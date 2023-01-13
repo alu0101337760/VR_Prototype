@@ -9,17 +9,14 @@ namespace VR_Prototype
     {
         public ParticleSystem[] particles;
         public Transform shotOrigin;
-
+        public Rigidbody rb;
 
         [Range(0.1f, 1)]
         public float vibrationAmplitude = 1;
         public float vibrationDuration = 1;
 
         private bool alreadyShot = false;
-
-        int layerMask = 1 << 3;
-
-        public Rigidbody rb;
+        private int layerMask = 1 << 3; // Enemigos es la layer 3
 
         private void Awake()
         {
