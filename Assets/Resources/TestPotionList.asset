@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: TestPotionList
   m_EditorClassIdentifier: 
   potionComponents:
-  - potionMaterial: {fileID: 2100000, guid: b102162a120e0ad48b01808d55f67f65, type: 2}
+  - potionMaterial: {fileID: 2100000, guid: 52d9583286a4596458e5680c4605c4b2, type: 2}
     potionName: 0
-    potionFlask: {fileID: 0}
-  - potionMaterial: {fileID: 2100000, guid: 608b85390cce9184ca2149f7eedd61f4, type: 2}
-    potionName: 1
     potionFlask: {fileID: 0}
