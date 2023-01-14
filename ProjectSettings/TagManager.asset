@@ -13,6 +13,8 @@ TagManager:
   - Water
   - UI
   - Obstacle
+  - Terrain
+  - Potions
   - 
   - 
   - 
@@ -36,8 +38,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Teleport
   m_SortingLayers:
   - name: Default
     uniqueID: 0

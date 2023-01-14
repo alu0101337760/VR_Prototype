@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace VR_Prototype
 {
     public class PotionSpawn : MonoBehaviour
     {
-        void Start()
+        [ContextMenu("Spawn Enemy")]
+        public void SpawnPotion()
         {
             PotionManager.instance.InstantiatePotion(0, transform.position, transform.rotation);
         }

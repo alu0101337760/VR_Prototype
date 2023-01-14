@@ -22,7 +22,8 @@ namespace VR_Prototype
         void Start()
         {
             if (instance == null) instance = this;
-            else {
+            else
+            {
                 Debug.LogError("More than one EnemyPool in scene");
                 return;
             }
@@ -45,7 +46,7 @@ namespace VR_Prototype
             {
                 if (!spawners.Contains(i)) objectives.Add(i);
             }
-            
+
         }
 
         public IEnumerator SpawnWave(int enemyNumber, float delay = 0.5f)
@@ -108,7 +109,8 @@ namespace VR_Prototype
         public void KillEnemy(int id)
         {
             if (enemies[id].active) enemies[id].Die();
-            else {
+            else
+            {
                 activeEnemies--;
                 if (activeEnemies <= 0) StartCoroutine(GameManager.instance.OnWaveEnded());
             }

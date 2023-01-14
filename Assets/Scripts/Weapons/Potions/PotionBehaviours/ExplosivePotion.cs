@@ -7,10 +7,11 @@ namespace VR_Prototype
         protected override void HandlePotionEffect(Collision collision)
         {
             Vector3 center = transform.position;
-            Collider[] collisions = Physics.OverlapSphere(center, this.radius, LayerMask.NameToLayer("Enemies"));
+            Collider[] collisions = Physics.OverlapSphere(center, this.radius, ~LayerMask.NameToLayer("Enemies"));
             
             for (int i = 0; i < collisions.Length; i++)
             {
+                Debug.Log(collisions[i].gameObject.name);
                 collisions[i].gameObject.GetComponent<Enemy>().Die();
             }
         }
