@@ -14,6 +14,8 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
     public Transform shotOrigin;
     public Rigidbody rb;
 
+    public float muzzleVelocity = 50;
+
     [Range(0.1f, 1)]
     public float vibrationAmplitude = 1;
     public float vibrationDuration = 1;
@@ -47,7 +49,7 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 
             ///SHOOT POTION LOGIC
             GameObject shotPotion = PotionManager.instance.InstantiatePotion(LoadedPotion, shotOrigin.position, shotOrigin.rotation);
-
+            shotPotion.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, muzzleVelocity), ForceMode.Impulse);
             LoadedPotion = null;
         }
     }
