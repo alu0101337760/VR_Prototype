@@ -5691,12 +5691,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0966794131bd73443bec00e311e9cfe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8850494728684436702, guid: 78d05c7a48133df4eb22ca67604f5ed0, type: 3}
+  particles: []
   shotOrigin: {fileID: 1985376429}
-  muzzleVelocity: 100
-  secondsOfCooldown: 1
+  rb: {fileID: 0}
   vibrationAmplitude: 1
   vibrationDuration: 1
+  SphereCastRadius: 0.3
 --- !u!33 &8955243790298633099
 MeshFilter:
   m_ObjectHideFlags: 0
