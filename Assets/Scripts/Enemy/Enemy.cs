@@ -17,6 +17,7 @@ namespace VR_Prototype
         public float maxHealth = 3f;
         public float attackDamage = 10f;
         public float attackDelay = 1f;
+        public int dropChancePercentage = 20;
         private float attackTimer = 0f;
         private bool isAttacking = false;
         private EnemyMovement movement;
@@ -135,7 +136,19 @@ namespace VR_Prototype
             }
         }
 
+        private void DropLogic()
+        {
+            int rand = Random.Range(0, 100);
+            if(rand > dropChancePercentage)
+            {
+                //TRIGGER DROP VISUALS
+                rand = Random.Range(0, ItemManager.instance.itemList.itemList.Count-1);
+                InventoryManager.instance.AddItem(rand);
+            }
+        }
+
         override public void Die() {
+            DropLogic();
             EnemyPool.instance.KillEnemy(id);
         }
 

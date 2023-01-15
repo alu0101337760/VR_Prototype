@@ -15,19 +15,6 @@ namespace VR_Prototype
         private InventoryManager() 
         {
             inventory = new Dictionary<int, int>();
-
-            // ESTO ES PARA HACER PRUEBAS CON EL CRAFTEO. BORRAR
-            // AddItem(0);
-            // AddItem(1);
-            // AddItem(1);
-            // AddItem(1);
-            // AddItem(2);
-            // AddItem(3);
-            // AddItem(3);
-            // AddItem(3);
-            // AddItem(3);
-
-            // PrintInventory();
         }
 
         private void Awake() 
