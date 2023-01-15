@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VR_Prototype
 {
-    public class Lightning : Potion
+    public class LightningPotion : Potion
     {
         public int lightningRange = 5;
         public int lightningDamage = 1;
