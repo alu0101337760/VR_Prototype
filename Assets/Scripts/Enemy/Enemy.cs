@@ -14,7 +14,7 @@ namespace VR_Prototype
         public float reach = 3f;
         public float maxSpeed = 1f;
         public float currentSpeed = 1f;
-        public float maxHealth = 3f;
+        public float maxHealth = 1f;
         public float attackDamage = 10f;
         public float attackDelay = 1f;
         public int dropChancePercentage = 20;
