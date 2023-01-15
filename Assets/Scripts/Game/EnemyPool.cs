@@ -97,12 +97,12 @@ namespace VR_Prototype
             enemies[id].SetObjective(interestPoints[objective]);
         }
 
-        public void EnemyHit(int id, float damage = 50)
+        public void EnemyHit(int id, float damage = 1f)
         {
             enemies[id].TakeDamage(damage);
         }
 
-        public void EnemyHit(int[] ids, float damage = 50)
+        public void EnemyHit(int[] ids, float damage = 1f)
         {
             for (int i = 0; i < ids.Length; i++)
             {

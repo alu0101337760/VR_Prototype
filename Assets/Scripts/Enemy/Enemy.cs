@@ -14,7 +14,7 @@ namespace VR_Prototype
         public float reach = 3f;
         public float maxSpeed = 1f;
         public float currentSpeed = 1f;
-
+        public float maxHealth = 3f;
         public float attackDamage = 10f;
         public float attackDelay = 1f;
         private float attackTimer = 0f;
@@ -46,7 +46,7 @@ namespace VR_Prototype
             active = true;
             dying = false;
             isAttacking = false;
-            health = 100;
+            health = maxHealth;
             gameObject.SetActive(true);
             visuals.Reset();
         }
@@ -68,9 +68,8 @@ namespace VR_Prototype
         }
 
         [ContextMenu("Set Speed")]
-        public void SetSpeed()
+        public void SetSpeed(float speedRatio = 0.5f)
         {
-            float speedRatio = 0.5f;
             currentSpeed = speedRatio * maxSpeed;
             visuals.SetAnimationSpeed(speedRatio);
         }
@@ -104,10 +103,12 @@ namespace VR_Prototype
         {
         }
 
-        public void OnPathInterrupted(Transform interrupter)
+        public void OnPathInterrupted(Transform interrupter, bool offensive = false)
         {
-            if (interrupter == currentTarget) {
+            if (offensive) {
                 SetCurrentTarget(target);
+            } else {
+                movement.UpdatePath(currentTarget);
             }
         }
 
