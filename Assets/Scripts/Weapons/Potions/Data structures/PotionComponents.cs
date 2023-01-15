@@ -15,7 +15,7 @@ namespace VR_Prototype
         public PotionComponents(PotionComponents other, Type potionType) : this()
         {
             this.potionMaterial = other.potionMaterial;
-            this.potionName = (PotionNames)Enum.Parse(typeof(PotionNames), potionType.ToString());
+            this.potionName = other.potionName;
             this.potionFlask = other.potionFlask;
             this.potionType = potionType;
         }
