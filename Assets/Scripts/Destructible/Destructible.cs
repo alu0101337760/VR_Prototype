@@ -7,7 +7,7 @@ namespace VR_Prototype
     public class Destructible : MonoBehaviour
     {
         public float health = 100f;
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
             health -= damage;
             if (health <= 0)

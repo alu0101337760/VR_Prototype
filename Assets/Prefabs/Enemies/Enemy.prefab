@@ -141,7 +141,7 @@ MonoBehaviour:
   target: {fileID: 0}
   currentTarget: {fileID: 0}
   reach: 5
-  speed: 5
+  maxSpeed: 5
   currentSpeed: 5
   attackDamage: 10
   attackDelay: 1

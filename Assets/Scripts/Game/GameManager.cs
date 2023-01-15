@@ -10,6 +10,11 @@ namespace VR_Prototype
         public int wave = 0;
         public List<int> waves = new List<int>();
         public float timeBetweenWaves = 5f;
+        public int infiniteIncrement = 5;
+        private int currentWaveSize = 0;
+        private bool infinite = false;
+        private bool gameStarted = false;
+
         void Awake()
         {
             if (instance == null) instance = this;
@@ -19,8 +24,25 @@ namespace VR_Prototype
         [ContextMenu("Start Game")]
         void StartGame()
         {
+            gameStarted = true;
+            infinite = false;
             wave = 0;
             StartWave();
+        }
+
+        [ContextMenu("Start Infinite Game")]
+        void StartInfiniteGame()
+        {
+            gameStarted = true;
+            infinite = true;
+            currentWaveSize += infiniteIncrement;
+            StartInfiniteWave();
+        }
+
+        void StartInfiniteWave() {
+            StartCoroutine(EnemyPool.instance.SpawnWave(currentWaveSize));
+            wave++;
+            Debug.Log("Wave " + wave + " Started");
         }
 
         void StartWave() {
@@ -33,9 +55,16 @@ namespace VR_Prototype
 
         public IEnumerator OnWaveEnded()
         {
-            Debug.Log("Wave " + wave + "Ended");
+            Debug.Log("Wave " + wave + " Ended");
             yield return new WaitForSeconds(timeBetweenWaves);
-            if (wave < waves.Count) StartWave();
+            if (!gameStarted) {}
+            else if (infinite) {
+                currentWaveSize += infiniteIncrement;
+                StartInfiniteWave();
+            }
+            else if (wave < waves.Count) {
+                StartWave();
+            }
             else {
                 GameOver(true);
             }
@@ -44,6 +73,7 @@ namespace VR_Prototype
         public void GameOver(bool win = false)
         {
             Debug.Log("Game Over: " + (win ? "You Win!" : "You Lose!"));
+            gameStarted = false;
         }
     }
 }

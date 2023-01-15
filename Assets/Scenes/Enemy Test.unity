@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSize: 20
-  activeEnemies: 0
+  livingEnemies: 0
   enemyPrefab: {fileID: 5627496048627908012, guid: 083b943952841e44e8371b9f641a7649, type: 3}
   enemies: []
   interestPoints:
@@ -763,8 +763,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: 0
-  waves: 0500000007000000080000000a0000000f000000
+  waves: 0500000007000000080000000a0000000f00000032000000
   timeBetweenWaves: 5
+  infiniteIncrement: 5
 --- !u!1 &778232013
 GameObject:
   m_ObjectHideFlags: 0
