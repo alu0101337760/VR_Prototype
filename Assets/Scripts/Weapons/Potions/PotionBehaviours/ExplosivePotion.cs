@@ -4,18 +4,17 @@ namespace VR_Prototype
 {
     public class ExplosivePotion : Potion
     {
+        public override void StopPotionEffect() { }
+
         protected override void HandlePotionEffect(Collision collision)
         {
             Vector3 center = transform.position;
-            Collider[] collisions = Physics.OverlapSphere(center, this.radius);
+            Collider[] collisions = Physics.OverlapSphere(center, this.radius, 1 << 3);
 
-            // filter collisions (too lazy to use collision layers, will check in the future)
             for (int i = 0; i < collisions.Length; i++)
             {
-                if (collisions[i].tag == "Enemy")
-                {
-                    collisions[i].gameObject.GetComponent<Enemy>().Die();
-                }
+                Debug.Log(collisions[i].gameObject.name);
+                collisions[i].gameObject.GetComponent<Enemy>().Die();
             }
         }
 

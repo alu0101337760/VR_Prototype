@@ -15,14 +15,15 @@ namespace VR_Prototype
         public PotionComponents(PotionComponents other, Type potionType) : this()
         {
             this.potionMaterial = other.potionMaterial;
-            this.potionName = other.potionName;
+            this.potionName = (PotionNames)Enum.Parse(typeof(PotionNames), potionType.ToString());
             this.potionFlask = other.potionFlask;
             this.potionType = potionType;
         }
 
-        public PotionComponents( PotionNames name, Type potionType) : this()
+        public PotionComponents(PotionNames name, Type potionType) : this()
         {
+            this.potionName = name;
             this.potionType = potionType;
         }
-        }
+    }
 }

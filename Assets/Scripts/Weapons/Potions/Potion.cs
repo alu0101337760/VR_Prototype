@@ -12,11 +12,16 @@ namespace VR_Prototype
 
         protected abstract void HandlePotionEffect(Collision collision);
 
+        public abstract void StopPotionEffect();
+
         private void OnCollisionEnter(Collision collision)
         {
-            this.timeOfActivation = Time.time;
-            PotionManager.instance.AddUsedPotion(this);
-            HandlePotionEffect(collision);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            {
+                this.timeOfActivation = Time.time;
+                PotionManager.instance.AddUsedPotion(this);
+                HandlePotionEffect(collision);
+            }
         }
     }
 }
