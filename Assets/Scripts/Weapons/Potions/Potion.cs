@@ -12,6 +12,8 @@ namespace VR_Prototype
 
         protected abstract void HandlePotionEffect(Collision collision);
 
+        public abstract void StopPotionEffect();
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))

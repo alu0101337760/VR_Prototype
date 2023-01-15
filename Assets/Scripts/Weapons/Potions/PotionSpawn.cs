@@ -10,7 +10,7 @@ namespace VR_Prototype
         [ContextMenu("Spawn Enemy")]
         public void SpawnPotion()
         {
-            PotionManager.instance.InstantiatePotion(0, transform.position, transform.rotation);
+            PotionManager.instance.InstantiatePotion(1, transform.position, transform.rotation);
         }
     }
 }

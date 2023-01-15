@@ -29,14 +29,13 @@ public enum PotionNames
                 {
                     if (types[i].Name == componentList[j].potionName.ToString())
                     {
-                        componentList[j] = new PotionComponents(componentList[i], types[i]);
+                        componentList[j] = new PotionComponents(componentList[j], types[i]);
                         broken = true;
                         break;
                     }
                 }
                 if (!broken)
                 {
-
                     componentList.Add(new PotionComponents((PotionNames)Enum.Parse(typeof(PotionNames), types[i].Name), types[i]));
                 }
             }
@@ -65,10 +64,7 @@ public enum PotionNames
             string dirName = Path.GetDirectoryName(Directory.GetCurrentDirectory());
             dirName += "\\VR_Prototype\\Assets\\Scripts\\Weapons\\Potions\\PotionNames";
             File.WriteAllText(dirName + "\\PotionNames.cs", enumText);
-
-
             HandleTypeAssignation(potionTypes);
-
         }
     }
 }

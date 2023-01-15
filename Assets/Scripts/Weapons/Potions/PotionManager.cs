@@ -5,7 +5,6 @@ namespace VR_Prototype
 {
     public class PotionManager : MonoBehaviour
     {
-
         public static PotionManager instance { get; private set; }
         public GameObject potionPrefab;
         public PotionComponentsList potionComponents;
@@ -22,7 +21,6 @@ namespace VR_Prototype
                 usedPotionsQueue = new Queue<Potion>();
             }
         }
-
 
         public void AddUsedPotion(Potion potion)
         {
@@ -57,12 +55,12 @@ namespace VR_Prototype
 
         void Update()
         {
-
             for (int i = 0; i < usedPotionsQueue.Count; i++)
             {
                 currentPotion = usedPotionsQueue.Peek();
                 if (Time.time - currentPotion.timeOfActivation < currentPotion.effectDuration)
                 {
+                    currentPotion.StopPotionEffect();
                     break;
                 }
                 usedPotionsQueue.Dequeue();
