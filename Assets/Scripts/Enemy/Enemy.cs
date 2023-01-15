@@ -68,7 +68,7 @@ namespace VR_Prototype
         }
 
         [ContextMenu("Set Speed")]
-        public void SetSpeed(float speedRatio = 0.5f)
+        public void SetSpeed(float speedRatio)
         {
             currentSpeed = speedRatio * maxSpeed;
             visuals.SetAnimationSpeed(speedRatio);
