@@ -10,11 +10,15 @@ namespace VR_Prototype
         public static GunManager instance;
 
         public float spawnTime = 1;
-        public float despawnTime =1;
-        public Transform spawnerLocation;
-        public GunBehaviour gunA;
-        public GunBehaviour gunB;
-        
+        public float despawnTime = 1;
+
+        public Transform pistolSpawnerLocation;
+        public Transform canonSpawnerLocation;
+
+        public PistolBehaviour gunA;
+        public PistolBehaviour gunB;
+        public PotionCannon potCan;
+
         private void Awake()
         {
             if (instance == null)
@@ -29,25 +33,25 @@ namespace VR_Prototype
         }
 
         private void Start()
-        {            
-            gunA.transform.position = spawnerLocation.position;
-            gunA.transform.rotation = spawnerLocation.rotation;
-            
-            gunB.gameObject.SetActive(false);            
+        {
+            gunA.transform.position = pistolSpawnerLocation.position;
+            gunA.transform.rotation = pistolSpawnerLocation.rotation;
+
+            gunB.gameObject.SetActive(false);
         }
-        IEnumerator GunDespawnCorroutine(GunBehaviour gun)
+        IEnumerator GunDespawnCorroutine(PistolBehaviour gun)
         {
             yield return new WaitForSeconds(despawnTime);
             gun.gameObject.SetActive(false);
         }
-        
-        IEnumerator GunSpawnCorroutine(GunBehaviour gun)
+
+        IEnumerator GunSpawnCorroutine(PistolBehaviour gun)
         {
             yield return new WaitForSeconds(spawnTime);
             gun.gameObject.SetActive(true);
             gun.rb.isKinematic = true;
-            gun.transform.position = spawnerLocation.position;
-            gun.transform.rotation = spawnerLocation.rotation;
+            gun.transform.position = pistolSpawnerLocation.position;
+            gun.transform.rotation = pistolSpawnerLocation.rotation;
             gun.rb.isKinematic = false;
         }
         public void SpawnGun(SelectExitEventArgs args)
@@ -55,7 +59,7 @@ namespace VR_Prototype
             if (gunA.gameObject.activeSelf)
             {
                 StartCoroutine(GunDespawnCorroutine(gunA));
-                StartCoroutine(GunSpawnCorroutine(gunB));                
+                StartCoroutine(GunSpawnCorroutine(gunB));
             }
             else
             {

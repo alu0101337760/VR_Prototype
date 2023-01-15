@@ -32,8 +32,9 @@ namespace VR_Prototype
             GameObject newPotion = Instantiate(potionPrefab, pos, rot);
             PotionComponents potionComponent = potionComponents.potionComponents[potionID];
 
-            newPotion.AddComponent(potionComponent.potionType);
-
+            Potion potRef = (Potion)newPotion.AddComponent(potionComponent.potionType);
+            potRef.potionName = potionComponent.potionName;
+            
             // if (potionComponent.potionFlask != null)
             // {
             //     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
@@ -49,8 +50,12 @@ namespace VR_Prototype
             return CreateNewPotion(potionID, pos, rot);
         }
 
-        public GameObject InstantiatePotion(PotionNames potionID, Vector3 pos, Quaternion rot)
+        public GameObject InstantiatePotion(PotionNames? potionID, Vector3 pos, Quaternion rot)
         {
+            if(potionID == null)
+            {
+                throw new System.Exception("Null potionID reached InstantiatePotion");
+            }
             return CreateNewPotion((int)potionID, pos, rot);
         }
 

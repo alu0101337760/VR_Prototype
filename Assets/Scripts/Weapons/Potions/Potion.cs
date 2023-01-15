@@ -9,6 +9,7 @@ namespace VR_Prototype
         public float radius = 1.0f;
         public float timeOfActivation = -1;
         public float effectDuration = 5;
+        public PotionNames potionName;
 
         protected abstract void HandlePotionEffect(Collision collision);
 
