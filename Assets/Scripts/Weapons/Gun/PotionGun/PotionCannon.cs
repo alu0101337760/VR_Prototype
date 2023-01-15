@@ -20,9 +20,13 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
     public float vibrationAmplitude = 1;
     public float vibrationDuration = 1;
 
+    private GameObject potionVisuals;
+    private MeshRenderer potionRenderer;
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        potionVisuals = transform.Find("PotionVisuals").gameObject;
+        potionRenderer = transform.Find("Potion").GetComponent<MeshRenderer>();
     }
 
     public void OnEnable()
@@ -54,15 +58,19 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
         }
     }
 
+    private void UnloadPotion()
+    {
+
+    }
 
     public void LoadPotion(PotionNames potionToLoad)
     {
         // ACTIVATE MESH OBJECT
-        transform.Find("PotionVisuals").gameObject.SetActive(true);
+        potionVisuals.SetActive(true);
 
         // CHANGE MESH OBJECT'S POTION MATERIAL TO WHATEVER IT SHOULD BE
         PotionComponents potionComponent = PotionManager.instance.potionComponents.potionComponents[(int)potionToLoad];
-        transform.Find("Potion").GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
+        potionRenderer.material = potionComponent.potionMaterial;
 
         // ASIGN LOAD POTION NAME
         LoadedPotion = potionToLoad;
