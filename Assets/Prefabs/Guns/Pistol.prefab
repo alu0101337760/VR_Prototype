@@ -93,7 +93,7 @@ Transform:
   m_GameObject: {fileID: 4753159752866905082}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4601193689426900248}
@@ -230,7 +230,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: VR_Prototype.GunManager, Assembly-CSharp
-        m_MethodName: SpawnGun
+        m_MethodName: SpawnPistol
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -348,11 +348,10 @@ MonoBehaviour:
   - {fileID: 6835716629463794743}
   - {fileID: 6835716629674681626}
   shotOrigin: {fileID: 980757168}
-  muzzleVelocity: 100
-  secondsOfCooldown: 1
+  rb: {fileID: 0}
   vibrationAmplitude: 1
   vibrationDuration: 1
-  rb: {fileID: 0}
+  alreadyShot: 0
 --- !u!1001 &8250420925182197485
 PrefabInstance:
   m_ObjectHideFlags: 0

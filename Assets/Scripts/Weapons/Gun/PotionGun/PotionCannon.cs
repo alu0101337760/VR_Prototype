@@ -27,6 +27,7 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         potionVisuals = transform.Find("PotionVisuals").gameObject;
         potionRenderer = potionVisuals.transform.Find("Potion").GetComponent<MeshRenderer>();
+        potionVisuals.SetActive(false);
     }
 
     public void OnEnable()
