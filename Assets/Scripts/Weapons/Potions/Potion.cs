@@ -9,14 +9,20 @@ namespace VR_Prototype
         public float radius = 1.0f;
         public float timeOfActivation = -1;
         public float effectDuration = 5;
+        public PotionNames potionName;
 
         protected abstract void HandlePotionEffect(Collision collision);
 
+        public abstract void StopPotionEffect();
+
         private void OnCollisionEnter(Collision collision)
         {
-            this.timeOfActivation = Time.time;
-            PotionManager.instance.AddUsedPotion(this);
-            HandlePotionEffect(collision);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            {
+                this.timeOfActivation = Time.time;
+                PotionManager.instance.AddUsedPotion(this);
+                HandlePotionEffect(collision);
+            }
         }
     }
 }

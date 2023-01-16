@@ -8,18 +8,20 @@ namespace VR_Prototype
     {
         public int id = 0;
         public bool active = false;
+        public bool dying = false;
         public Transform target;
         public Transform currentTarget;
         public float reach = 3f;
-        public float speed = 1f;
+        public float maxSpeed = 1f;
         public float currentSpeed = 1f;
-
+        public float maxHealth = 1f;
         public float attackDamage = 10f;
         public float attackDelay = 1f;
+        public int dropChancePercentage = 20;
         private float attackTimer = 0f;
         private bool isAttacking = false;
         private EnemyMovement movement;
-        private EnemyVisuals visuals;
+        public EnemyVisuals visuals { get; private set; }
 
         void Start()
         {
@@ -30,15 +32,23 @@ namespace VR_Prototype
 
         void Update() {
             if (!active) return;
-            if (!isAttacking && currentTarget != null) movement.MovementUpdate();
+            if (dying) {
+                dying = !visuals.IsItDeadYet();
+                if (!dying) {
+                    active = false;
+                    gameObject.SetActive(false);
+                }
+            }
+            else if (!isAttacking && currentTarget != null) movement.MovementUpdate();
             else if (isAttacking) Attack();
         }
 
         public void Activate()
         {
             active = true;
+            dying = false;
             isAttacking = false;
-            health = 100;
+            health = maxHealth;
             gameObject.SetActive(true);
             visuals.Reset();
         }
@@ -46,7 +56,7 @@ namespace VR_Prototype
         public void SetObjective(Transform objective)
         {
             if (objective == null) return;
-            currentSpeed = speed;
+            currentSpeed = maxSpeed;
             target = objective;
             SetCurrentTarget(objective);
         }
@@ -59,6 +69,13 @@ namespace VR_Prototype
             Resume();
         }
 
+        [ContextMenu("Set Speed")]
+        public void SetSpeed(float speedRatio)
+        {
+            currentSpeed = speedRatio * maxSpeed;
+            visuals.SetAnimationSpeed(speedRatio);
+        }
+
         public void Halt()
         {
             visuals.Stop();
@@ -68,8 +85,9 @@ namespace VR_Prototype
         public void Resume()
         {
             if (!isAttacking) {
+                visuals.SetAnimationSpeed(1);
                 visuals.Walk();
-                currentSpeed = speed;
+                currentSpeed = maxSpeed;
             }
         }
 
@@ -87,10 +105,12 @@ namespace VR_Prototype
         {
         }
 
-        public void OnPathInterrupted(Transform interrupter)
+        public void OnPathInterrupted(Transform interrupter, bool offensive = false)
         {
-            if (interrupter == currentTarget) {
+            if (offensive) {
                 SetCurrentTarget(target);
+            } else {
+                movement.UpdatePath(currentTarget);
             }
         }
 
@@ -117,10 +137,28 @@ namespace VR_Prototype
             }
         }
 
+        private void DropLogic()
+        {
+            int rand = Random.Range(0, 100);
+            if(rand > dropChancePercentage)
+            {
+                //TRIGGER DROP VISUALS
+                rand = Random.Range(0, ItemManager.instance.itemList.itemList.Count-1);
+                InventoryManager.instance.AddItem(rand);
+            }
+        }
+
         override public void Die() {
-            visuals.Die();
-            active = false;
+            DropLogic();
             EnemyPool.instance.KillEnemy(id);
+        }
+
+        override public void TakeDamage(float damage)
+        {
+            base.TakeDamage(damage);
+            if (health <= 0) {
+                EnemyPool.instance.KillEnemy(id);
+            }
         }
     }
 }

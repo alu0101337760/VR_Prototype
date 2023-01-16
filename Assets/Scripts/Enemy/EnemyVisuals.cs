@@ -33,6 +33,14 @@ namespace VR_Prototype
             anim.SetBool("isWalking", false);
         }
 
+        public void SetAnimationSpeed(float speed) {
+            anim.SetFloat("Speed", speed);
+        }
+
+        public bool IsItDeadYet() {
+            return anim.GetCurrentAnimatorStateInfo(0).IsName("Dead");
+        }
+
         public void Reset() {
             if (anim == null) anim = GetComponent<Animator>();
             isWalking = false;

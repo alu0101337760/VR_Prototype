@@ -10,11 +10,16 @@ namespace VR_Prototype
         public static GunManager instance;
 
         public float spawnTime = 1;
-        public float despawnTime =1;
-        public Transform spawnerLocation;
-        public GunBehaviour gunA;
-        public GunBehaviour gunB;
-        
+        public float despawnTime = 1;
+        public float unshotDespawnTime = 10;
+
+        public Transform pistolSpawnerLocation;
+        public Transform canonSpawnerLocation;
+
+        public PistolBehaviour gunA;
+        public PistolBehaviour gunB;
+        public PotionCannon potCan;
+
         private void Awake()
         {
             if (instance == null)
@@ -29,38 +34,57 @@ namespace VR_Prototype
         }
 
         private void Start()
-        {            
-            gunA.transform.position = spawnerLocation.position;
-            gunA.transform.rotation = spawnerLocation.rotation;
-            
-            gunB.gameObject.SetActive(false);            
-        }
-        IEnumerator GunDespawnCorroutine(GunBehaviour gun)
         {
-            yield return new WaitForSeconds(despawnTime);
-            gun.gameObject.SetActive(false);
+            gunA.transform.position = pistolSpawnerLocation.position;
+            gunA.transform.rotation = pistolSpawnerLocation.rotation;
+            gunB.gameObject.SetActive(false);
+
+            potCan.transform.position = canonSpawnerLocation.position;
+            potCan.transform.rotation = canonSpawnerLocation.rotation;
         }
-        
-        IEnumerator GunSpawnCorroutine(GunBehaviour gun)
+        IEnumerator PistolDespawnCorroutine(PistolBehaviour gun)
         {
-            yield return new WaitForSeconds(spawnTime);
-            gun.gameObject.SetActive(true);
-            gun.rb.isKinematic = true;
-            gun.transform.position = spawnerLocation.position;
-            gun.transform.rotation = spawnerLocation.rotation;
-            gun.rb.isKinematic = false;
-        }
-        public void SpawnGun(SelectExitEventArgs args)
-        {
-            if (gunA.gameObject.activeSelf)
+            if (gun.alreadyShot)
             {
-                StartCoroutine(GunDespawnCorroutine(gunA));
-                StartCoroutine(GunSpawnCorroutine(gunB));                
+                yield return new WaitForSeconds(despawnTime);
             }
             else
             {
-                StartCoroutine(GunDespawnCorroutine(gunB));
-                StartCoroutine(GunSpawnCorroutine(gunA));
+                yield return new WaitForSeconds(unshotDespawnTime);
+            }
+            gun.gameObject.SetActive(false);
+        }
+
+        IEnumerator PistolSpawnCorroutine(PistolBehaviour gun)
+        {
+            if(!(gunA.isActiveAndEnabled && gunB.isActiveAndEnabled))
+            {
+                yield return new WaitForSeconds(spawnTime);
+                gun.gameObject.SetActive(true);
+                gun.rb.isKinematic = true;
+                gun.transform.position = pistolSpawnerLocation.position;
+                gun.transform.rotation = pistolSpawnerLocation.rotation;
+                gun.rb.isKinematic = false;
+            }            
+        }
+
+        public void ResetCannon(SelectExitEventArgs args)
+        {
+            potCan.transform.position = canonSpawnerLocation.position;
+            potCan.transform.rotation = canonSpawnerLocation.rotation;
+        }
+
+        public void SpawnPistol(SelectExitEventArgs args)
+        {
+            if (gunA.gameObject.activeSelf)
+            {
+                StartCoroutine(PistolDespawnCorroutine(gunA));
+                StartCoroutine(PistolSpawnCorroutine(gunB));
+            }
+            else
+            {
+                StartCoroutine(PistolDespawnCorroutine(gunB));
+                StartCoroutine(PistolSpawnCorroutine(gunA));
             }
         }
     }

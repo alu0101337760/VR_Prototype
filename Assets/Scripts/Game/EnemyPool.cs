@@ -10,7 +10,7 @@ namespace VR_Prototype
         public int poolSize = 10;
 
         [SerializeField]
-        private int activeEnemies = 0;
+        private int livingEnemies = 0;
         public GameObject enemyPrefab;
         public List<Enemy> enemies = new List<Enemy>();
 
@@ -18,6 +18,8 @@ namespace VR_Prototype
         public List<Transform> interestPoints;
         public List<int> spawners = new List<int>();
         private List<int> objectives = new List<int>();
+
+        private bool spawningWave = false;
 
         void Start()
         {
@@ -50,17 +52,19 @@ namespace VR_Prototype
 
         public IEnumerator SpawnWave(int enemyNumber, float delay = 0.5f)
         {
+            spawningWave = true;
             for (int i = 0; i < enemyNumber; i++)
             {
-                SpawnEnemy();
                 yield return new WaitForSeconds(delay);
+                if (!SpawnEnemy()) i--;
             }
+            spawningWave = false;
         }
 
         [ContextMenu("Spawn Enemy")]
-        private void SpawnEnemy()
+        private bool SpawnEnemy()
         {
-            if (objectives.Count == 0) return;
+            if (objectives.Count == 0) return false;
             for (int i = 0; i < enemies.Count; i++)
             {
                 if (!enemies[i].active)
@@ -71,10 +75,11 @@ namespace VR_Prototype
                     enemies[i].transform.position = interestPoints[spawner].position;
                     enemies[i].Activate();
                     enemies[i].SetObjective(interestPoints[objective]);
-                    activeEnemies++;
-                    return;
+                    livingEnemies++;
+                    return true;
                 }
             }
+            return false;
         }
 
         public void Switch2Spawner(int id)
@@ -92,12 +97,12 @@ namespace VR_Prototype
             enemies[id].SetObjective(interestPoints[objective]);
         }
 
-        public void EnemyHit(int id, float damage = 50)
+        public void EnemyHit(int id, float damage = 1f)
         {
             enemies[id].TakeDamage(damage);
         }
 
-        public void EnemyHit(int[] ids, float damage = 50)
+        public void EnemyHit(int[] ids, float damage = 1f)
         {
             for (int i = 0; i < ids.Length; i++)
             {
@@ -107,10 +112,17 @@ namespace VR_Prototype
 
         public void KillEnemy(int id)
         {
-            if (enemies[id].active) enemies[id].Die();
-            else {
-                activeEnemies--;
-                if (activeEnemies <= 0) StartCoroutine(GameManager.instance.OnWaveEnded());
+            enemies[id].dying = true;
+            enemies[id].visuals.Die();
+            livingEnemies--;
+            if (livingEnemies <= 0 && !spawningWave) StartCoroutine(GameManager.instance.OnWaveEnded());
+        }
+
+        public void KillEnemy(int[] ids)
+        {
+            for (int i = 0; i < ids.Length; i++)
+            {
+                KillEnemy(ids[i]);
             }
         }
 
@@ -119,8 +131,18 @@ namespace VR_Prototype
         {
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (enemies[i].active) enemies[i].Die();
+                if (enemies[i].active && !enemies[i].dying) KillEnemy(i);
             }
+        }
+
+        public Enemy[] GetLivingEnemies()
+        {
+            Enemy[] activeEnemies = new Enemy[livingEnemies];
+            for (int i = 0, j = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].active && !enemies[i].dying) activeEnemies[j++] = enemies[i];
+            }
+            return activeEnemies;
         }
     }
 }

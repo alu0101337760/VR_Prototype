@@ -16,3 +16,12 @@ MonoBehaviour:
   - potionMaterial: {fileID: 2100000, guid: 52d9583286a4596458e5680c4605c4b2, type: 2}
     potionName: 0
     potionFlask: {fileID: 0}
+  - potionMaterial: {fileID: 2100000, guid: 9a1ddce643806d242a99ae577abb2913, type: 2}
+    potionName: 1
+    potionFlask: {fileID: 0}
+  - potionMaterial: {fileID: 2100000, guid: 965393eb51d88e049999149627e0ad75, type: 2}
+    potionName: 2
+    potionFlask: {fileID: 0}
+  - potionMaterial: {fileID: 2100000, guid: c83b51e0c72a70047a4b58d6b076da5d, type: 2}
+    potionName: 3
+    potionFlask: {fileID: 0}

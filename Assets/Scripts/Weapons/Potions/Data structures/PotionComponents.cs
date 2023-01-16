@@ -20,9 +20,10 @@ namespace VR_Prototype
             this.potionType = potionType;
         }
 
-        public PotionComponents( PotionNames name, Type potionType) : this()
+        public PotionComponents(PotionNames name, Type potionType) : this()
         {
+            this.potionName = name;
             this.potionType = potionType;
         }
-        }
+    }
 }

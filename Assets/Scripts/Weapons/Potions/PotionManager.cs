@@ -5,7 +5,6 @@ namespace VR_Prototype
 {
     public class PotionManager : MonoBehaviour
     {
-
         public static PotionManager instance { get; private set; }
         public GameObject potionPrefab;
         public PotionComponentsList potionComponents;
@@ -23,7 +22,6 @@ namespace VR_Prototype
             }
         }
 
-
         public void AddUsedPotion(Potion potion)
         {
             usedPotionsQueue.Enqueue(potion);
@@ -34,8 +32,9 @@ namespace VR_Prototype
             GameObject newPotion = Instantiate(potionPrefab, pos, rot);
             PotionComponents potionComponent = potionComponents.potionComponents[potionID];
 
-            newPotion.AddComponent(potionComponent.potionType);
-
+            Potion potRef = (Potion)newPotion.AddComponent(potionComponent.potionType);
+            potRef.potionName = potionComponent.potionName;
+            
             // if (potionComponent.potionFlask != null)
             // {
             //     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
@@ -51,19 +50,23 @@ namespace VR_Prototype
             return CreateNewPotion(potionID, pos, rot);
         }
 
-        public GameObject InstantiatePotion(PotionNames potionID, Vector3 pos, Quaternion rot)
+        public GameObject InstantiatePotion(PotionNames? potionID, Vector3 pos, Quaternion rot)
         {
+            if(potionID == null)
+            {
+                throw new System.Exception("Null potionID reached InstantiatePotion");
+            }
             return CreateNewPotion((int)potionID, pos, rot);
         }
 
         void Update()
         {
-
             for (int i = 0; i < usedPotionsQueue.Count; i++)
             {
                 currentPotion = usedPotionsQueue.Peek();
                 if (Time.time - currentPotion.timeOfActivation < currentPotion.effectDuration)
                 {
+                    currentPotion.StopPotionEffect();
                     break;
                 }
                 usedPotionsQueue.Dequeue();
