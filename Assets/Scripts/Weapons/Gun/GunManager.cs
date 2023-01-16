@@ -57,7 +57,7 @@ namespace VR_Prototype
 
         IEnumerator PistolSpawnCorroutine(PistolBehaviour gun)
         {
-            if(!gunA.isActiveAndEnabled && !gunB.isActiveAndEnabled)
+            if(!(gunA.isActiveAndEnabled && gunB.isActiveAndEnabled))
             {
                 yield return new WaitForSeconds(spawnTime);
                 gun.gameObject.SetActive(true);
