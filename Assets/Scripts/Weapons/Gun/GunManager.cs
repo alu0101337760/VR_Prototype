@@ -57,7 +57,7 @@ namespace VR_Prototype
 
         IEnumerator PistolSpawnCorroutine(PistolBehaviour gun)
         {
-            if(!gunA.isActiveAndEnabled && !gunB.isActiveAndEnabled)
+            if(!(gunA.isActiveAndEnabled && gunB.isActiveAndEnabled))
             {
                 yield return new WaitForSeconds(spawnTime);
                 gun.gameObject.SetActive(true);
@@ -69,11 +69,13 @@ namespace VR_Prototype
         }
 
         public void ResetCannon(SelectExitEventArgs args)
-        {            
+        {
+            potCan.gameObject.SetActive(false);         
             potCan.rb.isKinematic = true;
             potCan.transform.position = canonSpawnerLocation.position;
             potCan.transform.rotation = canonSpawnerLocation.rotation;
             potCan.rb.isKinematic = false;
+            potCan.gameObject.SetActive(true);
         }
 
         public void SpawnPistol(SelectExitEventArgs args)
