@@ -36,6 +36,7 @@ namespace VR_Prototype
                 dying = !visuals.IsItDeadYet();
                 if (!dying) {
                     active = false;
+                    gameObject.SetActive(false);
                 }
             }
             else if (!isAttacking && currentTarget != null) movement.MovementUpdate();

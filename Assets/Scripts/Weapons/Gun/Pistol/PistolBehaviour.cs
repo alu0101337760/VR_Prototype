@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.OpenXR.Input;
+using UnityEngine.VFX;
 
 namespace VR_Prototype
 {
     public class PistolBehaviour : MonoBehaviour,  GunBehaviour
     {
         public ParticleSystem[] particles;
+        public VisualEffect[] effects;
         public Transform shotOrigin;
         public Rigidbody rb;
 
@@ -34,12 +36,16 @@ namespace VR_Prototype
             {
                 particles[i].Play();
             }
+            for (int i = 0; i < effects.Length; i++)
+            {
+                effects[i].Play();
+            }
         }
 
         public void Shoot(ActivateEventArgs args)
         {
-            if (!alreadyShot)
-            {
+            // if (!alreadyShot)
+            // {
                 if (args.interactorObject is XRBaseControllerInteractor controllerInteractor)
                 {
                     TriggerHaptic(controllerInteractor.xrController);
@@ -52,7 +58,7 @@ namespace VR_Prototype
                     EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
                 }
                 alreadyShot = true;
-            }
+            // }
 
         }
 

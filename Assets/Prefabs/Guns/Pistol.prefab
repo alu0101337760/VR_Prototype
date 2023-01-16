@@ -347,6 +347,8 @@ MonoBehaviour:
   - {fileID: 6835716629862170840}
   - {fileID: 6835716629463794743}
   - {fileID: 6835716629674681626}
+  effects:
+  - {fileID: 802596658095520055}
   shotOrigin: {fileID: 980757168}
   rb: {fileID: 0}
   vibrationAmplitude: 1
@@ -413,6 +415,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+--- !u!2083052967 &802596658095520055 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8744872780159109082, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+  m_PrefabInstance: {fileID: 8250420925182197485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &6835716629463794743 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3216196927519767258, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
