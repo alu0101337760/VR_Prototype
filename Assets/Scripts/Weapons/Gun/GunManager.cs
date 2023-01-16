@@ -69,9 +69,11 @@ namespace VR_Prototype
         }
 
         public void ResetCannon(SelectExitEventArgs args)
-        {
+        {            
+            potCan.rb.isKinematic = true;
             potCan.transform.position = canonSpawnerLocation.position;
             potCan.transform.rotation = canonSpawnerLocation.rotation;
+            potCan.rb.isKinematic = false;
         }
 
         public void SpawnPistol(SelectExitEventArgs args)

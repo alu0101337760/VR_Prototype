@@ -22,11 +22,11 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 
     private GameObject potionVisuals;
     private MeshRenderer potionRenderer;
-    private void Awake()
+    private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         potionVisuals = transform.Find("PotionVisuals").gameObject;
-        potionRenderer = transform.Find("Potion").GetComponent<MeshRenderer>();
+        potionRenderer = potionVisuals.transform.Find("Potion").GetComponent<MeshRenderer>();
     }
 
     public void OnEnable()
@@ -61,7 +61,19 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
     private void UnloadPotion()
     {
         potionVisuals.SetActive(false);
+        loadingChamber.enabled = true;
         LoadedPotion = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("PotionCannon OnTriggerEnter: " + other.gameObject.name );
+        Potion potComponent = other.gameObject.GetComponent<Potion>();
+        if ( potComponent != null) {
+            PotionNames potionName = other.GetComponent<Potion>().potionName;
+            LoadPotion(potionName);
+            Destroy(other.gameObject);
+        }
     }
 
     public void LoadPotion(PotionNames potionToLoad)
@@ -75,6 +87,9 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 
         // ASIGN LOAD POTION NAME
         LoadedPotion = potionToLoad;
+
+        // DISABLE LOADING CHAMBER
+        loadingChamber.enabled = false;
     }
 
     private void TriggerHaptic(XRBaseController controller)
