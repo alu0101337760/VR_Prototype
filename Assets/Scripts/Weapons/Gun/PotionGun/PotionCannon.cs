@@ -8,7 +8,8 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 {
     public Collider loadingChamber;
 
-    public PotionNames? LoadedPotion = null;
+    public PotionNames loadedPotion;
+    public bool isLoaded = false;
 
     public ParticleSystem[] particles;
     public Transform shotOrigin;
@@ -44,7 +45,7 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 
     public void Shoot(ActivateEventArgs args)
     {
-        if (LoadedPotion != null)
+        if (isLoaded)
         {
             if (args.interactorObject is XRBaseControllerInteractor controllerInteractor)
             {
@@ -53,7 +54,7 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
             PlayEffects();
 
             ///SHOOT POTION LOGIC
-            GameObject shotPotion = PotionManager.instance.InstantiatePotion(LoadedPotion, shotOrigin.position, shotOrigin.rotation);
+            GameObject shotPotion = PotionManager.instance.InstantiatePotion(loadedPotion, shotOrigin.position, shotOrigin.rotation);
             shotPotion.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, muzzleVelocity), ForceMode.Impulse);
             UnloadPotion();
         }
@@ -63,14 +64,14 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
     {
         potionVisuals.SetActive(false);
         loadingChamber.enabled = true;
-        LoadedPotion = null;
+        isLoaded = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("PotionCannon OnTriggerEnter: " + other.gameObject.name );
         Potion potComponent = other.gameObject.GetComponent<Potion>();
-        if ( potComponent != null) {
+        if ( potComponent != null && !isLoaded) {
             PotionNames potionName = other.GetComponent<Potion>().potionName;
             LoadPotion(potionName);
             Destroy(other.gameObject);
@@ -87,7 +88,8 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
         potionRenderer.material = potionComponent.potionMaterial;
 
         // ASIGN LOAD POTION NAME
-        LoadedPotion = potionToLoad;
+        loadedPotion = potionToLoad;
+        isLoaded = true;
 
         // DISABLE LOADING CHAMBER
         loadingChamber.enabled = false;
