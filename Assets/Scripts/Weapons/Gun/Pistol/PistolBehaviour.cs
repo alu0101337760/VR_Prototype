@@ -15,7 +15,7 @@ namespace VR_Prototype
         public float vibrationAmplitude = 1;
         public float vibrationDuration = 1;
 
-        private bool alreadyShot = false;
+        public bool alreadyShot = false;
         private int layerMask = 1 << 3; // Enemigos es la layer 3
 
         private void Awake()
