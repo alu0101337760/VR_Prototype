@@ -6,9 +6,8 @@ namespace VR_Prototype
     public class PotionManager : MonoBehaviour
     {
         public static PotionManager instance { get; private set; }
-        public GameObject potionPrefab;
+        public PotionList potionList;
         public PotionComponentsList potionComponents;
-
         private static Queue<Potion> usedPotionsQueue;
 
         private Potion currentPotion;
@@ -29,18 +28,20 @@ namespace VR_Prototype
 
         private GameObject CreateNewPotion(int potionID, Vector3 pos, Quaternion rot)
         {
-            GameObject newPotion = Instantiate(potionPrefab, pos, rot);
-            PotionComponents potionComponent = potionComponents.potionComponents[potionID];
+            //GameObject newPotion = Instantiate(potionPrefab, pos, rot);
+            //PotionComponents potionComponent = potionComponents.potionComponents[potionID];
 
-            Potion potRef = (Potion)newPotion.AddComponent(potionComponent.potionType);
-            potRef.potionName = potionComponent.potionName;
+            //Potion potRef = (Potion)newPotion.AddComponent(potionComponent.potionType);
+            //potRef.potionName = potionComponent.potionName;
 
-            // if (potionComponent.potionFlask != null)
-            // {
-            //     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
-            // }
+            //// if (potionComponent.potionFlask != null)
+            //// {
+            ////     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
+            //// }
 
-            newPotion.transform.Find("Potion").GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
+            //newPotion.transform.Find("Potion").GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
+
+            GameObject newPotion = Instantiate(potionList.potionPrefabs[potionID], pos, rot);
 
             return newPotion;
         }
