@@ -111,7 +111,9 @@ GameObject:
   - component: {fileID: 5204886978240391132}
   - component: {fileID: 5204886978240391104}
   - component: {fileID: 5204886978240391135}
+  - component: {fileID: 676321622}
   - component: {fileID: 5204886978240391134}
+  - component: {fileID: 676321621}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -432,6 +434,19 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
+--- !u!65 &676321622
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204886978240391110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.026619673, y: 0.08016132, z: 0.1}
+  m_Center: {x: -0.010384917, y: -0.02, z: -0.03}
 --- !u!135 &5204886978240391134
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -445,6 +460,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &676321621
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204886978240391110}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!1 &5204886978653182470
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +488,9 @@ GameObject:
   - component: {fileID: 5204886978653182492}
   - component: {fileID: 5204886978653182464}
   - component: {fileID: 5204886978653182495}
+  - component: {fileID: 15803542}
   - component: {fileID: 5204886978653182494}
+  - component: {fileID: 15803541}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -778,6 +811,19 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
+--- !u!65 &15803542
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204886978653182470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.026619673, y: 0.08016132, z: 0.1}
+  m_Center: {x: -0.010384917, y: -0.02, z: -0.03}
 --- !u!135 &5204886978653182494
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -791,6 +837,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &15803541
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204886978653182470}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!1 &5204886978791119563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,40 +1122,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb20ab6316c1e9949ae02784d108ee3c, type: 3}
+--- !u!137 &947116521058750581 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4242482846685892375, guid: cb20ab6316c1e9949ae02784d108ee3c, type: 3}
+  m_PrefabInstance: {fileID: 5204886977719378076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4970303765208374733 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cb20ab6316c1e9949ae02784d108ee3c, type: 3}
   m_PrefabInstance: {fileID: 5204886977719378076}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &74408683534724152
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4970303765208374733}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!65 &7942253079394231711
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4970303765208374733}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.1, z: 0.17}
-  m_Center: {x: -0.04, y: 0.03, z: 0.01}
 --- !u!114 &5204886977585039109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,6 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56585b2b3ab6f8a43a10ed9cf085cf05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handCollider: {fileID: 5204886978653182494}
+  handRenderer: {fileID: 947116521058750581}
 --- !u!4 &5742582502681757559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cb20ab6316c1e9949ae02784d108ee3c, type: 3}
@@ -1177,35 +1217,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fc675af0adab7f54a87e30411fc8053d, type: 3}
   m_PrefabInstance: {fileID: 5204886978552601875}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &1394616800918567336
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4970303764832591938}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!65 &301922200662003424
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4970303764832591938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.1, z: 0.17}
-  m_Center: {x: 0.04, y: 0.03, z: 0.01}
 --- !u!114 &5204886977138877693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,8 +1229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56585b2b3ab6f8a43a10ed9cf085cf05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handCollider: {fileID: 5204886978240391134}
+  handRenderer: {fileID: 7806700321237218142}
 --- !u!4 &5742582501815253752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc675af0adab7f54a87e30411fc8053d, type: 3}
+  m_PrefabInstance: {fileID: 5204886978552601875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7806700321237218142 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6598475261284798899, guid: fc675af0adab7f54a87e30411fc8053d, type: 3}
   m_PrefabInstance: {fileID: 5204886978552601875}
   m_PrefabAsset: {fileID: 0}
