@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: -4027786627895416189}
   - component: {fileID: 3772395308451679768}
   - component: {fileID: 5392454949055275571}
+  - component: {fileID: 3003337128998557400}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -224,14 +225,26 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3003337128998557400}
+        m_TargetAssemblyTypeName: VR_Prototype.Item, Assembly-CSharp
+        m_MethodName: PickUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VR_Prototype.GunManager, Assembly-CSharp
-        m_MethodName: SpawnPistol
-        m_Mode: 0
+      - m_Target: {fileID: 3003337128998557400}
+        m_TargetAssemblyTypeName: VR_Prototype.Item, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -247,6 +260,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GunBehaviour, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3003337128998557400}
+        m_TargetAssemblyTypeName: VR_Prototype.Item, Assembly-CSharp
+        m_MethodName: DespawnASAP
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -354,6 +379,20 @@ MonoBehaviour:
   vibrationAmplitude: 1
   vibrationDuration: 1
   alreadyShot: 0
+--- !u!114 &3003337128998557400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4753159752866905082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55999ac2a6be969439baa5e54396bc2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dispenser: {fileID: 0}
+  isGrabbed: 0
 --- !u!1001 &8250420925182197485
 PrefabInstance:
   m_ObjectHideFlags: 0
