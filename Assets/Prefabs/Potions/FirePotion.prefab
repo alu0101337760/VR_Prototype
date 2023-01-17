@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef54ee55b63aff4ba4a5b47bcf94353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 20
   timeOfActivation: -1
   effectDuration: 0
   potionName: 0

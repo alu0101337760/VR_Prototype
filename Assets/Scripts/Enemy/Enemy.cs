@@ -28,6 +28,7 @@ namespace VR_Prototype
             movement = GetComponent<EnemyMovement>();
             visuals = GetComponent<EnemyVisuals>();
             gameObject.SetActive(false);
+            Activate();
         }
 
         void Update() {

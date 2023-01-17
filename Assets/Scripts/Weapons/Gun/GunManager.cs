@@ -30,7 +30,6 @@ namespace VR_Prototype
             {
                 throw new System.Exception("There can only be one GunManager");
             }
-
         }
 
         private void Start()

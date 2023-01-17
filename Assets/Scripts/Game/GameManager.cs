@@ -22,16 +22,16 @@ namespace VR_Prototype
         }
 
         [ContextMenu("Start Game")]
-        void StartGame()
+        public void StartGame()
         {
             gameStarted = true;
             infinite = false;
             wave = 0;
             StartWave();
-        }
+        }   
 
         [ContextMenu("Start Infinite Game")]
-        void StartInfiniteGame()
+        public void StartInfiniteGame()
         {
             gameStarted = true;
             infinite = true;
@@ -39,13 +39,13 @@ namespace VR_Prototype
             StartInfiniteWave();
         }
 
-        void StartInfiniteWave() {
+        public void StartInfiniteWave() {
             StartCoroutine(EnemyPool.instance.SpawnWave(currentWaveSize));
             wave++;
             Debug.Log("Wave " + wave + " Started");
         }
 
-        void StartWave() {
+        public void StartWave() {
             if (wave < waves.Count) {
                 StartCoroutine(EnemyPool.instance.SpawnWave(waves[wave]));
                 wave++;
