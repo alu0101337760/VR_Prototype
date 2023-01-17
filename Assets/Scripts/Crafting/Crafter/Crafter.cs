@@ -7,7 +7,6 @@ namespace VR_Prototype
     public class Crafter : MonoBehaviour
     {
         public RecipeList recipeList;
-        public InventoryManager inventoryManager;
 
         private int numberOfItemsInCauldron;
         private List<int> cauldronContent;

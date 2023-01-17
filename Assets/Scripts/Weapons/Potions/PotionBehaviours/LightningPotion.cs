@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VR_Prototype
@@ -8,21 +6,25 @@ namespace VR_Prototype
     {
         public int lightningRange = 5;
         public int lightningDamage = 1;
-        public override void StopPotionEffect(){      }
+        public override void StopPotionEffect() { }
 
         protected override void HandlePotionEffect(Collision collision)
         {
             Enemy[] aliveEnemies = EnemyPool.instance.GetLivingEnemies();
-            int randomIndex = Random.Range(0, aliveEnemies.Length);
 
-            Vector3 center = aliveEnemies[randomIndex].transform.position;
-            aliveEnemies[randomIndex].Die();
-            Collider[] collisions = Physics.OverlapSphere(center, lightningRange, 1 << 3);
-
-            for (int i = 0; i < collisions.Length; i++)
+            if (aliveEnemies.Length > 0)
             {
-                Debug.Log(collisions[i].gameObject.name);
-                collisions[i].gameObject.GetComponent<Enemy>().TakeDamage(lightningDamage);
+                int randomIndex = Random.Range(0, aliveEnemies.Length);
+
+                Vector3 center = aliveEnemies[randomIndex].transform.position;
+                aliveEnemies[randomIndex].Die();
+                Collider[] collisions = Physics.OverlapSphere(center, lightningRange, 1 << 3);
+
+                for (int i = 0; i < collisions.Length; i++)
+                {
+                    Debug.Log(collisions[i].gameObject.name);
+                    collisions[i].gameObject.GetComponent<Enemy>().TakeDamage(lightningDamage);
+                }
             }
         }
 

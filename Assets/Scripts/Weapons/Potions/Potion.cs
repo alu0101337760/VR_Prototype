@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace VR_Prototype
@@ -19,11 +17,11 @@ namespace VR_Prototype
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer == 7 && !isTriggered)
+            if ((collision.gameObject.layer == 3 || collision.gameObject.layer == 7) && !isTriggered)
             {
                 Debug.Log("Potion effect triggered");
                 isTriggered = true;
-                this.timeOfActivation = Time.time;                
+                this.timeOfActivation = Time.time;
                 PotionManager.instance.AddUsedPotion(this);
                 HandlePotionEffect(collision);
             }

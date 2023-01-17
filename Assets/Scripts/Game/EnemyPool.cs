@@ -24,7 +24,8 @@ namespace VR_Prototype
         void Start()
         {
             if (instance == null) instance = this;
-            else {
+            else
+            {
                 Debug.LogError("More than one EnemyPool in scene");
                 return;
             }
@@ -47,7 +48,7 @@ namespace VR_Prototype
             {
                 if (!spawners.Contains(i)) objectives.Add(i);
             }
-            
+
         }
 
         public IEnumerator SpawnWave(int enemyNumber, float delay = 0.5f)
@@ -137,12 +138,15 @@ namespace VR_Prototype
 
         public Enemy[] GetLivingEnemies()
         {
-            Enemy[] activeEnemies = new Enemy[livingEnemies];
-            for (int i = 0, j = 0; i < enemies.Count; i++)
+            List<Enemy> activeEnemies = new List<Enemy>();
+            for (int i = 0; i < enemies.Count; i++)
             {
-                if (enemies[i].active && !enemies[i].dying) activeEnemies[j++] = enemies[i];
+                if (enemies[i].active && !enemies[i].dying)
+                {
+                    activeEnemies.Add(enemies[i]);
+                };
             }
-            return activeEnemies;
+            return activeEnemies.ToArray();
         }
     }
 }
