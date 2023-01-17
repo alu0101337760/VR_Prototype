@@ -69,7 +69,6 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("PotionCannon OnTriggerEnter: " + other.gameObject.name );
         Potion potComponent = other.gameObject.GetComponent<Potion>();
         if ( potComponent != null && !isLoaded) {
             PotionNames potionName = other.GetComponent<Potion>().potionName;
