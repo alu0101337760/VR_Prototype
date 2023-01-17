@@ -52,6 +52,10 @@ namespace VR_Prototype
                 yield return new WaitForSeconds(unshotDespawnTime);
             }
             gun.gameObject.SetActive(false);
+            if (gunA.isActiveAndEnabled == false && gunB.isActiveAndEnabled == false)
+            {
+                gunA.gameObject.SetActive(true);
+            }
         }
 
         IEnumerator PistolSpawnCorroutine(PistolBehaviour gun)
