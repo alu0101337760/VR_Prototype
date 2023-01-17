@@ -55,7 +55,7 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
 
             ///SHOOT POTION LOGIC
             GameObject shotPotion = PotionManager.instance.InstantiatePotion(loadedPotion, shotOrigin.position, shotOrigin.rotation);
-            shotPotion.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, muzzleVelocity), ForceMode.Impulse);
+            shotPotion.GetComponent<Rigidbody>().AddForce(transform.forward * muzzleVelocity, ForceMode.Impulse);
             UnloadPotion();
         }
     }
