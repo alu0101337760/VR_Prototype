@@ -17,10 +17,6 @@ namespace VR_Prototype
             numberOfItemsInCauldron = 0;
             cauldronContent = new List<int>();
             itemsInCauldron = new List<GameObject>();
-
-
-            // Craft(5);
-            // inventoryManager.PrintInventory();
         }
 
         void OnTriggerEnter(Collider collided) 

@@ -8,6 +8,7 @@ namespace VR_Prototype
 
         protected override void HandlePotionEffect(Collision collision)
         {
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             SphereCollider triggerZone = this.gameObject.AddComponent<SphereCollider>();
             triggerZone.isTrigger = true;
         }

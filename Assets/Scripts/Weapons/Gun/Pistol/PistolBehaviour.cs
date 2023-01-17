@@ -53,7 +53,6 @@ namespace VR_Prototype
                 PlayEffects();
                 if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    Debug.Log(hit.transform.gameObject.name);
                     Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
                     EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
                 }
