@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace VR_Prototype 
 {
     public sealed class InventoryManager : MonoBehaviour
     {
-        public delegate void itemMessage(int itemID);
-        public event itemMessage OnItemAdded;
+        public UnityEvent<int> OnItemAdded;
 
         private Dictionary<int, int> inventory;
 
@@ -42,7 +42,7 @@ namespace VR_Prototype
             {
                 inventory.Add(newItem, 1);
             }
-            OnItemAdded(newItem);
+            OnItemAdded.Invoke(newItem);
         }
 
         public void RemoveItem(int deletedItem = 0) 
