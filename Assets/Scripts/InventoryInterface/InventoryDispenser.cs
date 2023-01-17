@@ -10,7 +10,7 @@ namespace VR_Prototype {
 
         protected override void Start() {
             base.Start();
-            InventoryManager.instance.OnItemAdded += StockReplenish;
+            InventoryManager.instance.OnItemAdded.AddListener(StockReplenish);
         }
 
         public override void OnItemGrabbed(Item item)
