@@ -1,44 +1,45 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class MovementConsole : MonoBehaviour
+namespace VR_Prototype
 {
-    public Material activatedMaterial;
-    public Material deactivatedMaterial;
-    public GameObject locomotionObject;
-    public MeshRenderer tPVisuals;
-    public MeshRenderer actionBasedVisuals;
-
-    public GameObject leftHandController;
-    public GameObject rightHandController;    
-
-    private ActionBasedContinuousMoveProvider actionBasedMoveProvider;
-    private TeleportationProvider teleportationProvider;
-
-    private void Start()
+    public class MovementConsole : MonoBehaviour
     {
-        actionBasedMoveProvider = locomotionObject.GetComponent<ActionBasedContinuousMoveProvider>();
-        teleportationProvider = locomotionObject.GetComponent<TeleportationProvider>();
-    }
+        public Material activatedMaterial;
+        public Material deactivatedMaterial;
+        public GameObject locomotionObject;
+        public MeshRenderer tPVisuals;
+        public MeshRenderer actionBasedVisuals;
 
-    public void ActivateTeleportLocomotion()
-    {
-        if (actionBasedMoveProvider.enabled)
+
+        private ActionBasedContinuousMoveProvider actionBasedMoveProvider;
+        private TeleportationProvider teleportationProvider;
+
+        private void Start()
         {
-            actionBasedMoveProvider.enabled = false;
-            teleportationProvider.enabled = true;
-            tPVisuals.material = activatedMaterial;
-            actionBasedVisuals.material = deactivatedMaterial;
+            actionBasedMoveProvider = locomotionObject.GetComponent<ActionBasedContinuousMoveProvider>();
+            teleportationProvider = locomotionObject.GetComponent<TeleportationProvider>();
         }
-    }
-    public void ActivateActionBased()
-    {
-        if (teleportationProvider.enabled)
+
+        public void ActivateTeleportLocomotion()
         {
-            actionBasedMoveProvider.enabled = true;
-            teleportationProvider.enabled = false;
-            tPVisuals.material = deactivatedMaterial;
-            actionBasedVisuals.material = activatedMaterial;
+            if (actionBasedMoveProvider.enabled)
+            {
+                actionBasedMoveProvider.enabled = false;
+                teleportationProvider.enabled = true;
+                tPVisuals.material = activatedMaterial;
+                actionBasedVisuals.material = deactivatedMaterial;
+            }
+        }
+        public void ActivateActionBased()
+        {
+            if (teleportationProvider.enabled)
+            {
+                actionBasedMoveProvider.enabled = true;
+                teleportationProvider.enabled = false;
+                tPVisuals.material = deactivatedMaterial;
+                actionBasedVisuals.material = activatedMaterial;
+            }
         }
     }
 }
