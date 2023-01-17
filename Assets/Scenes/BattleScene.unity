@@ -836,6 +836,8 @@ MonoBehaviour:
   locomotionObject: {fileID: 249199088}
   tPVisuals: {fileID: 392883091}
   actionBasedVisuals: {fileID: 1193330468}
+  leftHandController: {fileID: 754272308}
+  rightHandController: {fileID: 1427855653}
 --- !u!1 &549487863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1458,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &754272308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5204886978653182470, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+  m_PrefabInstance: {fileID: 5204886978647883405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &779833744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,6 +2743,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324070385}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1427855653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5204886978240391110, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+  m_PrefabInstance: {fileID: 5204886978647883405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1480997881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,6 +3020,8 @@ MonoBehaviour:
   locomotionObject: {fileID: 249199088}
   tPVisuals: {fileID: 0}
   actionBasedVisuals: {fileID: 2104769352}
+  leftHandController: {fileID: 0}
+  rightHandController: {fileID: 0}
 --- !u!4 &1679690989
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class MovementConsole : MonoBehaviour
     public MeshRenderer tPVisuals;
     public MeshRenderer actionBasedVisuals;
 
+    public GameObject leftHandController;
+    public GameObject rightHandController;    
+
     private ActionBasedContinuousMoveProvider actionBasedMoveProvider;
     private TeleportationProvider teleportationProvider;
 
