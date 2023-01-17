@@ -36,6 +36,7 @@ namespace VR_Prototype {
             else lifetime = 5;
         }
 
+        [ContextMenu("Despawn ASAP")]
         public void DespawnASAP() {
             skipLifetime = true;
         }

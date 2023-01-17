@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dispenser: {fileID: 204489690}
-  kickTime: 7
+  kickTime: 2
 --- !u!114 &204489690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4753159752866905082, guid: 7ae3cbf55ae63d446b874254f0e4a262, type: 3}
   itemInstances: []
-  itemLifetime: 2
-  spawnDelay: 3
+  itemLifetime: 6
+  allowedGuns: 3
+  spawnDelay: 1
 --- !u!1 &1050103014
 GameObject:
   m_ObjectHideFlags: 0
