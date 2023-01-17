@@ -33,12 +33,6 @@ namespace VR_Prototype
             return inventory[itemID];
         }
 
-        [ContextMenu("AddItem")]
-        public void AddItem() 
-        {
-            AddItem(0);
-        }
-
         public void AddItem(int newItem = 0) 
         {
             if (inventory.ContainsKey(newItem)) 
@@ -49,11 +43,6 @@ namespace VR_Prototype
                 inventory.Add(newItem, 1);
             }
             OnItemAdded(newItem);
-        }
-        [ContextMenu("RemoveItem")]
-        public void RemoveItem() 
-        {
-            RemoveItem(0);
         }
 
         public void RemoveItem(int deletedItem = 0) 
