@@ -46,12 +46,10 @@ public class PysicsButton : MonoBehaviour
     {
         if (!isPressed && GetValue() + threshold >= 1)
         {
-            Debug.Log("ButtonPressed");
             Pressed();
         }
         if (isPressed && GetValue() - threshold <= 0)
         {
-            Debug.Log("ButtonReleased");
             Released();
         }
     }

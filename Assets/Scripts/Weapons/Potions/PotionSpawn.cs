@@ -13,10 +13,10 @@ namespace VR_Prototype
         [ContextMenu("Spawn all Potions")]
         public void SpawnPotions()
         {
-            PotionManager.instance.InstantiatePotion(0, spawnPoint.position, spawnPoint.rotation);
-            PotionManager.instance.InstantiatePotion(1, spawnPoint.position, spawnPoint.rotation);
-            PotionManager.instance.InstantiatePotion(2, spawnPoint.position, spawnPoint.rotation);
-            PotionManager.instance.InstantiatePotion(3, spawnPoint.position, spawnPoint.rotation);
+            PotionManager.instance.InstantiatePotion(0, spawnPoint.position , spawnPoint.rotation);
+            PotionManager.instance.InstantiatePotion(1, spawnPoint.position + new Vector3(.1f, 0, 0), spawnPoint.rotation);
+            PotionManager.instance.InstantiatePotion(2, spawnPoint.position + new Vector3(.2f, 0, 0), spawnPoint.rotation);
+            PotionManager.instance.InstantiatePotion(3, spawnPoint.position + new Vector3(.3f, 0, 0), spawnPoint.rotation);
         }
 
         [ContextMenu("Spawn Potion")]
