@@ -17,9 +17,8 @@ namespace VR_Prototype
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer == (1 << 7))
+            if (collision.gameObject.layer == 7)
             {
-                Debug.Log("Potion collided with terrain");
                 this.timeOfActivation = Time.time;
                 PotionManager.instance.AddUsedPotion(this);
                 HandlePotionEffect(collision);
