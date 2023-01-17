@@ -11,15 +11,19 @@ namespace VR_Prototype
         public float effectDuration = 5;
         public PotionNames potionName;
 
+        private bool isTriggered = false;
+
         protected abstract void HandlePotionEffect(Collision collision);
 
         public abstract void StopPotionEffect();
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.layer == 7)
+            if (collision.gameObject.layer == 7 && !isTriggered)
             {
-                this.timeOfActivation = Time.time;
+                Debug.Log("Potion effect triggered");
+                isTriggered = true;
+                this.timeOfActivation = Time.time;                
                 PotionManager.instance.AddUsedPotion(this);
                 HandlePotionEffect(collision);
             }

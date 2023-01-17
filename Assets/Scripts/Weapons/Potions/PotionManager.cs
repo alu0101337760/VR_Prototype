@@ -34,12 +34,12 @@ namespace VR_Prototype
 
             Potion potRef = (Potion)newPotion.AddComponent(potionComponent.potionType);
             potRef.potionName = potionComponent.potionName;
-            
+
             // if (potionComponent.potionFlask != null)
             // {
             //     newPotion.GetComponent<MeshFilter>().mesh = potionComponent.potionFlask;
             // }
-            
+
             newPotion.transform.Find("Potion").GetComponent<MeshRenderer>().material = potionComponent.potionMaterial;
 
             return newPotion;
@@ -52,7 +52,7 @@ namespace VR_Prototype
 
         public GameObject InstantiatePotion(PotionNames? potionID, Vector3 pos, Quaternion rot)
         {
-            if(potionID == null)
+            if (potionID == null)
             {
                 throw new System.Exception("Null potionID reached InstantiatePotion");
             }
@@ -66,11 +66,12 @@ namespace VR_Prototype
                 currentPotion = usedPotionsQueue.Peek();
                 if (Time.time - currentPotion.timeOfActivation < currentPotion.effectDuration)
                 {
-                    currentPotion.StopPotionEffect();
-                    break;
+                    continue;
                 }
+                currentPotion.StopPotionEffect();
                 usedPotionsQueue.Dequeue();
-                Destroy(currentPotion);
+                Destroy(currentPotion.gameObject);
+                if (usedPotionsQueue.Count == 0) { break; }
             }
         }
     }
