@@ -7,17 +7,14 @@ namespace VR_Prototype
     public class Crafter : MonoBehaviour
     {
         public RecipeList recipeList;
-        public InventoryManager inventoryManager;
 
         private int numberOfItemsInCauldron;
         private List<int> cauldronContent;
-        private List<GameObject> itemsInCauldron;
 
         public void Start() 
         {
             numberOfItemsInCauldron = 0;
             cauldronContent = new List<int>();
-            itemsInCauldron = new List<GameObject>();
 
 
             // Craft(5);
@@ -28,12 +25,14 @@ namespace VR_Prototype
         {
             if (collided.tag == "Item") {
                 numberOfItemsInCauldron++;
-                int id = collided.gameObject.GetComponent<poolItemID>().id;
+                poolItemID item = collided.gameObject.GetComponent<poolItemID>();
+                int id = item.id;
                 Debug.Log(collided.gameObject.name);
                 Debug.Log("Inserted item " + id);
                 cauldronContent.Add(id);
-                itemsInCauldron.Add(collided.gameObject);
-                
+                item.DespawnItem();
+                InventoryManager.instance.RemoveItem(id);
+
                 if (numberOfItemsInCauldron == 4) {
                     int potion = -1;
                     foreach (Recipe recipe in recipeList.recipeList) {
@@ -52,9 +51,6 @@ namespace VR_Prototype
         {
             numberOfItemsInCauldron = 0;
             cauldronContent.Clear();
-            foreach (GameObject item in itemsInCauldron) {
-                ItemManager.instance.RemoveItem(item);
-            }
         }
 
 

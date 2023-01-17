@@ -6,6 +6,9 @@ namespace VR_Prototype
 {
     public sealed class InventoryManager : MonoBehaviour
     {
+        public delegate void itemMessage(int itemID);
+        public event itemMessage OnItemAdded;
+
         private Dictionary<int, int> inventory;
 
         // public static attribute that contains the only instance of InventoryManager
@@ -25,7 +28,18 @@ namespace VR_Prototype
             }
         }
 
-        public void AddItem(int newItem) 
+        public int itemQuantity(int itemID) {
+            if (!inventory.ContainsKey(itemID)) return 0;
+            return inventory[itemID];
+        }
+
+        [ContextMenu("AddItem")]
+        public void AddItem() 
+        {
+            AddItem(0);
+        }
+
+        public void AddItem(int newItem = 0) 
         {
             if (inventory.ContainsKey(newItem)) 
             {
@@ -34,11 +48,17 @@ namespace VR_Prototype
             {
                 inventory.Add(newItem, 1);
             }
+            OnItemAdded(newItem);
+        }
+        [ContextMenu("RemoveItem")]
+        public void RemoveItem() 
+        {
+            RemoveItem(0);
         }
 
-        public void RemoveItem(int deletedItem) 
+        public void RemoveItem(int deletedItem = 0) 
         {
-            if ((inventory[deletedItem] > 1) && (inventory.ContainsKey(deletedItem))) 
+            if ((inventory[deletedItem] > 0) && (inventory.ContainsKey(deletedItem))) 
             {
                 inventory[deletedItem] -= 1;
             }
@@ -63,6 +83,7 @@ namespace VR_Prototype
             return true;
         }
 
+        [ContextMenu("PrintInventory")]
         public void PrintInventory() 
         {
             Debug.Log("Printing inventory");
