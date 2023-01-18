@@ -9,12 +9,10 @@ namespace VR_Prototype
     {
         static public GameManager instance { get; private set; }
         public int wave = 0;
-        public List<int> waves = new List<int>();
-        public float timeBetweenWaves = 5f;
         public int infiniteIncrement = 5;
         private int currentWaveSize = 0;
-        private bool infinite = false;
-        private bool gameStarted = false;
+        private bool inWave = false;
+        private bool gameOver = false;
         public UnityEvent OnWaveEnd;
 
         void Awake()
@@ -23,42 +21,35 @@ namespace VR_Prototype
             else Debug.LogError("More than one WaveManager in scene");
         }
 
-        [ContextMenu("Start Game")]
-        public void StartGame()
-        {
-            gameStarted = true;
-            infinite = false;
-            wave = 0;
-            StartWave();
-        }   
-
-        [ContextMenu("Start Infinite Game")]
-        public void StartInfiniteGame()
-        {
-            gameStarted = true;
-            infinite = true;
+        [ContextMenu("Start Wave")]
+        public void StartWave() {
+            if (inWave || gameOver) return;
+            inWave = true;
             currentWaveSize += infiniteIncrement;
-            StartInfiniteWave();
-        }
-
-        public void StartInfiniteWave() {
             StartCoroutine(EnemyPool.instance.SpawnWave(currentWaveSize));
             wave++;
             Debug.Log("Wave " + wave + " Started");
         }
 
-        public void StartWave() {
-            if (wave < waves.Count) {
-                StartCoroutine(EnemyPool.instance.SpawnWave(waves[wave]));
-                wave++;
-                Debug.Log("Wave " + wave + " Started");
-            }
+        public void EndWave() {
+            inWave = false;
+            OnWaveEnd.Invoke();
+            Debug.Log("Wave " + wave + " Ended");
         }
 
+        [ContextMenu("Restart")]
+        public void Restart() {
+            Debug.Log("Restarting");
+            wave = 0;
+            currentWaveSize = 0;
+            gameOver = false;
+            inWave = false;
+            EnemyPool.instance.Reset();
+        }
         public void GameOver(bool win = false)
         {
             Debug.Log("Game Over: " + (win ? "You Win!" : "You Lose!"));
-            gameStarted = false;
+            gameOver = true;
         }
     }
 }

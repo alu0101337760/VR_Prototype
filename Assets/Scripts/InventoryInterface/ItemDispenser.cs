@@ -29,7 +29,6 @@ namespace VR_Prototype {
 
         void OnTriggerExit(Collider other)
         {
-            Debug.Log("OnTriggerExit");
             Item item = other.GetComponent<Item>();
             if (item != null && itemInstances.Contains(item)) {
                 item.DespawnProtection = false;
