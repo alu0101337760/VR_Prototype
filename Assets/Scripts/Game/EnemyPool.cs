@@ -116,7 +116,7 @@ namespace VR_Prototype
             enemies[id].dying = true;
             enemies[id].visuals.Die();
             livingEnemies--;
-            if (livingEnemies <= 0 && !spawningWave) StartCoroutine(GameManager.instance.OnWaveEnded());
+            if (livingEnemies <= 0 && !spawningWave) GameManager.instance.OnWaveEnd.Invoke();
         }
 
         public void KillEnemy(int[] ids)

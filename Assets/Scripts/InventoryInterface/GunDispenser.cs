@@ -15,7 +15,6 @@ namespace VR_Prototype {
 
         public override void DespawnItem(Item item)
         {
-            Debug.Log("Despawned");
             gunCount--;
             base.DespawnItem(item);
         }
@@ -29,7 +28,6 @@ namespace VR_Prototype {
 
         protected override void CheckDropSpace()
         {
-            Debug.Log("GUN");
             if (gunCount < allowedGuns) StartCoroutine(GunSpawn());
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace VR_Prototype
 {
@@ -14,6 +15,7 @@ namespace VR_Prototype
         private int currentWaveSize = 0;
         private bool infinite = false;
         private bool gameStarted = false;
+        public UnityEvent OnWaveEnd;
 
         void Awake()
         {
@@ -50,23 +52,6 @@ namespace VR_Prototype
                 StartCoroutine(EnemyPool.instance.SpawnWave(waves[wave]));
                 wave++;
                 Debug.Log("Wave " + wave + " Started");
-            }
-        }
-
-        public IEnumerator OnWaveEnded()
-        {
-            Debug.Log("Wave " + wave + " Ended");
-            yield return new WaitForSeconds(timeBetweenWaves);
-            if (!gameStarted) {}
-            else if (infinite) {
-                currentWaveSize += infiniteIncrement;
-                StartInfiniteWave();
-            }
-            else if (wave < waves.Count) {
-                StartWave();
-            }
-            else {
-                GameOver(true);
             }
         }
 

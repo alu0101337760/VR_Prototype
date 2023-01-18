@@ -19,6 +19,7 @@ namespace VR_Prototype
         private InventoryManager() 
         {
             inventory = new Dictionary<int, int>();
+            keys = new List<int>();
         }
 
         private void Awake() 
