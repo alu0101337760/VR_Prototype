@@ -8,6 +8,7 @@ namespace VR_Prototype
         public float timeOfActivation = -1;
         public float effectDuration = 5;
         public PotionNames potionName;
+        public ParticleSystem potionEffect;
 
         private bool isTriggered = false;
 
@@ -23,6 +24,7 @@ namespace VR_Prototype
                 isTriggered = true;
                 this.timeOfActivation = Time.time;
                 PotionManager.instance.AddUsedPotion(this);
+                potionEffect.Play();
                 HandlePotionEffect(collision);
             }
         }

@@ -377,7 +377,7 @@ MonoBehaviour:
   shotOrigin: {fileID: 980757168}
   rb: {fileID: 0}
   vibrationAmplitude: 1
-  vibrationDuration: 1
+  vibrationDuration: 0.4
   alreadyShot: 0
 --- !u!114 &3003337128998557400
 MonoBehaviour:
