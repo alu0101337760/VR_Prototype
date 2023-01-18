@@ -19,9 +19,22 @@ namespace VR_Prototype {
             CheckDropSpace();
         }
 
+        void OnTriggerEnter(Collider other)
+        {
+            Item item = other.GetComponent<Item>();
+            if (item != null && itemInstances.Contains(item)) {
+                item.DespawnProtection = true;
+            }
+        }
+
         void OnTriggerExit(Collider other)
         {
             Debug.Log("OnTriggerExit");
+            Item item = other.GetComponent<Item>();
+            if (item != null && itemInstances.Contains(item)) {
+                item.DespawnProtection = false;
+                if (!item.isGrabbed) OnItemDropped(item);
+            }
             CheckDropSpace();
         }
 
@@ -55,19 +68,21 @@ namespace VR_Prototype {
                 }
             }
             if (item == null) item = CreateItem();
+            item.Stop();
             item.transform.position = transform.position;
+            item.transform.rotation = itemPrefab.transform.rotation;
             item.enabled = true;
             item.isGrabbed = false;
             item.gameObject.SetActive(true);
             item.ResetLifetime();
         }
 
-        public void DespawnItem(Item item)
+        public virtual void DespawnItem(Item item)
         {
             item.isGrabbed = false;
             item.enabled = false;
             item.gameObject.SetActive(false);
-            if (EmptyDropSpace()) CheckDropSpace();
+            CheckDropSpace();
         }
 
         public bool EmptyDropSpace() {

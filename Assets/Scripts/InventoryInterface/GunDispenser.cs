@@ -7,9 +7,16 @@ namespace VR_Prototype {
     public class GunDispenser : ItemDispenser
     {
         public int allowedGuns = 2;
+        public int gunCount = 0;
         public float spawnDelay = 5f;
         public override void OnItemGrabbed(Item item)
         {
+        }
+
+        public override void DespawnItem(Item item)
+        {
+            base.DespawnItem(item);
+            gunCount--;
         }
 
         public override void OnItemDropped(Item item)
@@ -21,10 +28,11 @@ namespace VR_Prototype {
 
         protected override void CheckDropSpace()
         {
-            if (ActiveItems() < allowedGuns && EmptyDropSpace()) StartCoroutine(GunSpawn());
+            if (gunCount < allowedGuns) StartCoroutine(GunSpawn());
         }
 
         IEnumerator GunSpawn() {
+            gunCount++;
             yield return new WaitForSeconds(spawnDelay);
             while (!EmptyDropSpace()) yield return new WaitForSeconds(0.5f);
             SpawnItem();

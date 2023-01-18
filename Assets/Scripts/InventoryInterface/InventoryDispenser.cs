@@ -23,7 +23,7 @@ namespace VR_Prototype {
         }
         protected override Item CreateItem() {
             Item item = base.CreateItem();
-            item.GetComponent<poolItemID>().id = itemType;
+            item.GetComponent<poolItem>().id = itemType;
             return item;
         }
         public override void OnItemDropped(Item item)

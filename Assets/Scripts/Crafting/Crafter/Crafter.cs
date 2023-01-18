@@ -25,7 +25,7 @@ namespace VR_Prototype
         {
             if (collided.tag == "Item") {
                 numberOfItemsInCauldron++;
-                poolItemID item = collided.gameObject.GetComponent<poolItemID>();
+                poolItem item = collided.gameObject.GetComponent<poolItem>();
                 int id = item.id;
                 Debug.Log(collided.gameObject.name);
                 Debug.Log("Inserted item " + id);
