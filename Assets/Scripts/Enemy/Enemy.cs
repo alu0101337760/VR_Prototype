@@ -14,7 +14,6 @@ namespace VR_Prototype
         public float reach = 3f;
         public float maxSpeed = 1f;
         public float currentSpeed = 1f;
-        public float maxHealth = 1f;
         public float attackDamage = 10f;
         public float attackDelay = 1f;
         public int dropChancePercentage = 20;
@@ -28,7 +27,6 @@ namespace VR_Prototype
             movement = GetComponent<EnemyMovement>();
             visuals = GetComponent<EnemyVisuals>();
             gameObject.SetActive(false);
-            Activate();
         }
 
         void Update() {
@@ -138,28 +136,19 @@ namespace VR_Prototype
             }
         }
 
-        private void DropLogic()
+        private void DropItems()
         {
             int rand = Random.Range(0, 100);
             if(rand < dropChancePercentage)
             {
-                //TRIGGER DROP VISUALS
                 rand = InventoryManager.instance.RandomItem();
                 InventoryManager.instance.AddItem(rand);
             }
         }
 
         override public void Die() {
-            DropLogic();
+            DropItems();
             EnemyPool.instance.KillEnemy(id);
-        }
-
-        override public void TakeDamage(float damage)
-        {
-            base.TakeDamage(damage);
-            if (health <= 0) {
-                EnemyPool.instance.KillEnemy(id);
-            }
         }
     }
 }
