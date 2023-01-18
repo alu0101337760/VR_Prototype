@@ -27,7 +27,6 @@ namespace VR_Prototype {
             rb.angularVelocity = Vector3.zero;
         }
 
-
         public void PickUp() {
             isGrabbed = true;
             lifetime = 0;

@@ -13,6 +13,7 @@ namespace VR_Prototype
 
         // public static attribute that contains the only instance of InventoryManager
         public static InventoryManager instance;
+        int currentKey = 0;
 
         // empty constructor
         private InventoryManager() 
@@ -28,9 +29,13 @@ namespace VR_Prototype
             }
         }
 
-        public int itemQuantity(int itemID) {
+        public int ItemQuantity(int itemID) {
             if (!inventory.ContainsKey(itemID)) return 0;
             return inventory[itemID];
+        }
+
+        public int ItemVariety() {
+            return inventory.Count;
         }
 
         [ContextMenu("Add Items")]
@@ -47,6 +52,17 @@ namespace VR_Prototype
             };
         }
 
+        public int AddKey() 
+        {
+            while(inventory.ContainsKey(currentKey)) currentKey += 1;
+            inventory.Add(currentKey, 0);
+            return currentKey;
+        }
+
+        public bool ContainsKey(int key) 
+        {
+            return inventory.ContainsKey(key);
+        }
         public void AddItem(int newItem) 
         {
             if (inventory.ContainsKey(newItem)) 

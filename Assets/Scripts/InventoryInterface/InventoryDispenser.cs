@@ -6,10 +6,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 namespace VR_Prototype {
     public class InventoryDispenser : ItemDispenser
     {
-        public int itemType;
+        [SerializeField]
+        private int itemType = 0;
 
         protected override void Start() {
             base.Start();
+            itemType = InventoryManager.instance.AddKey();
             InventoryManager.instance.OnItemAdded.AddListener(StockReplenish);
         }
 
@@ -33,7 +35,7 @@ namespace VR_Prototype {
 
         protected override void CheckDropSpace()
         {
-            if (InventoryManager.instance.itemQuantity(itemType) > ActiveItems() && EmptyDropSpace()) SpawnItem();
+            if (InventoryManager.instance.ItemQuantity(itemType) > ActiveItems() && EmptyDropSpace()) SpawnItem();
         }
 
         private void StockReplenish(int type) {
