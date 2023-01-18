@@ -33,7 +33,21 @@ namespace VR_Prototype
             return inventory[itemID];
         }
 
-        public void AddItem(int newItem = 0) 
+        [ContextMenu("Add Items")]
+        public void AddItems() {
+            foreach (int i in new int[0, 1, 2, 3]) {
+                AddItem(i);
+            };
+        }
+
+        [ContextMenu("Remove Items")]
+        public void RemoveItems() {
+            foreach (int i in new int[0, 1, 2, 3]) {
+                RemoveItem(i);
+            };
+        }
+
+        public void AddItem(int newItem) 
         {
             if (inventory.ContainsKey(newItem)) 
             {
@@ -47,7 +61,7 @@ namespace VR_Prototype
 
         public void RemoveItem(int deletedItem = 0) 
         {
-            if ((inventory[deletedItem] > 0) && (inventory.ContainsKey(deletedItem))) 
+            if (inventory.ContainsKey(deletedItem) && inventory[deletedItem] > 0) 
             {
                 inventory[deletedItem] -= 1;
             }

@@ -9,10 +9,24 @@ namespace VR_Prototype {
     {
         [HideInInspector]
         public ItemDispenser dispenser;
-        [HideInInspector]
+        // [HideInInspector]
         public bool isGrabbed = false;
+        // [HideInInspector]
+        public bool DespawnProtection = false;
         private int lifetime;
         private bool skipLifetime = false;
+        private Rigidbody rb;
+
+        protected virtual void Start() {
+            rb = GetComponent<Rigidbody>();
+        }
+
+        public void Stop() {
+            if (rb == null) return;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
 
         public void PickUp() {
             isGrabbed = true;
@@ -50,7 +64,7 @@ namespace VR_Prototype {
                 yield return new WaitForSeconds(1f);
                 lifetime--;
             }
-            if (!isGrabbed) DespawnItem();
+            if (!isGrabbed && !DespawnProtection || skipLifetime) DespawnItem();
             skipLifetime = false;
         }
     }
