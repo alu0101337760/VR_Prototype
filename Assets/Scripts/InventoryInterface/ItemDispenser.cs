@@ -80,6 +80,7 @@ namespace VR_Prototype {
         public virtual void DespawnItem(Item item)
         {
             item.isGrabbed = false;
+            item.Stop();
             item.enabled = false;
             item.gameObject.SetActive(false);
             CheckDropSpace();
