@@ -144,7 +144,7 @@ namespace VR_Prototype
             if(rand < dropChancePercentage)
             {
                 //TRIGGER DROP VISUALS
-                rand = Random.Range(0, ItemManager.instance.itemList.itemList.Count-1);
+                rand = Random.Range(0, 3);
                 InventoryManager.instance.AddItem(rand);
             }
         }
