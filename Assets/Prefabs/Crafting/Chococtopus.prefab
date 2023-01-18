@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1445614933208537559}
   - component: {fileID: 6455528110784067610}
   - component: {fileID: 4056462597632226067}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chococtopus
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 725585765827843194}
   - component: {fileID: 4151984323998882306}
   - component: {fileID: 7211774704026184872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 3940912212809789427}
   - component: {fileID: 6603266146833021159}
   - component: {fileID: 2175006750790709276}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Right eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1223610433753688149}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 6435797116927105427}
   - component: {fileID: 8130791409853831267}
   - component: {fileID: 3035052360410216583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

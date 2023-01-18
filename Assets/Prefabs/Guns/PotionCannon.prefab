@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 980757168}
   - component: {fileID: 809105686385730622}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: LoadingColllider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 2613061354919948923}
   - component: {fileID: 8869921743650546162}
   - component: {fileID: 295763283984984049}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Flask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4601193689426900248}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 661796190}
   - component: {fileID: -9174078367560324630}
   - component: {fileID: 1337116761731625601}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: PotionCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dispenser: {fileID: 0}
   isGrabbed: 0
+  DespawnProtection: 0
 --- !u!135 &1337116761731625601
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -436,7 +437,7 @@ GameObject:
   - component: {fileID: 2633210650180307278}
   - component: {fileID: 7781608486611755577}
   - component: {fileID: 6907627168936848081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1060918028127968976}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: ShotOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +552,7 @@ GameObject:
   - component: {fileID: 6917284045807837673}
   - component: {fileID: 7512740072530125464}
   - component: {fileID: 1679951690850016515}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3826248477573552540}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: PotionVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +669,7 @@ GameObject:
   - component: {fileID: 1288512895231772164}
   - component: {fileID: 5049555433679839299}
   - component: {fileID: 6224434445978149384}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +752,7 @@ GameObject:
   - component: {fileID: 8698679343677829774}
   - component: {fileID: 8980925380313796061}
   - component: {fileID: 2360706703108737321}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2358778318348979478}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8789857659155947418}
   - component: {fileID: 7329353523374031117}
   - component: {fileID: 1393419512055952824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fuse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 8619934355596813581}
   - component: {fileID: 5887072538812969006}
   - component: {fileID: 4727572270864808207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

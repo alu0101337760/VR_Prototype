@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 980757168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shotOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4601193689426900248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3772395308451679768}
   - component: {fileID: 5392454949055275571}
   - component: {fileID: 3003337128998557400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,6 +392,26 @@ PrefabInstance:
     - target: {fileID: 3216196926821572116, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196926821572117, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196927121358392, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196927519767257, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196927847816186, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870367650976279731, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8940330153178148682, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
       propertyPath: m_RootOrder

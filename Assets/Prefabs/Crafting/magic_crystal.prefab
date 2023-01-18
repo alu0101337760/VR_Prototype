@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5592915242928182367}
   - component: {fileID: -3334960297321004441}
   - component: {fileID: 7089422913473631440}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: magic_crystal
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1919900305467196117}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
