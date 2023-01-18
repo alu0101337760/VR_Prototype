@@ -10,10 +10,10 @@ namespace VR_Prototype
         public UnityEvent<int> OnItemAdded;
 
         private Dictionary<int, int> inventory;
+        private List<int> keys;
 
         // public static attribute that contains the only instance of InventoryManager
         public static InventoryManager instance;
-        int currentKey = 0;
 
         // empty constructor
         private InventoryManager() 
@@ -30,12 +30,12 @@ namespace VR_Prototype
         }
 
         public int ItemQuantity(int itemID) {
-            if (!inventory.ContainsKey(itemID)) return 0;
+            if (!keys.Contains(itemID)) return 0;
             return inventory[itemID];
         }
 
-        public int ItemVariety() {
-            return inventory.Count;
+        public int RandomItem() {
+            return keys[Random.Range(0, keys.Count)];
         }
 
         [ContextMenu("Add Items")]
@@ -52,24 +52,26 @@ namespace VR_Prototype
             };
         }
 
-        public int AddKey() 
+        public void AddKey(int key) 
         {
-            while(inventory.ContainsKey(currentKey)) currentKey += 1;
-            inventory.Add(currentKey, 0);
-            return currentKey;
+            if(!keys.Contains(key)) {
+                keys.Add(key);
+                inventory.Add(key, 0);
+            }
         }
 
         public bool ContainsKey(int key) 
         {
-            return inventory.ContainsKey(key);
+            return keys.Contains(key);
         }
         public void AddItem(int newItem) 
         {
-            if (inventory.ContainsKey(newItem)) 
+            if (keys.Contains(newItem)) 
             {
                 inventory[newItem] += 1;
             } else 
             {
+                keys.Add(newItem);
                 inventory.Add(newItem, 1);
             }
             OnItemAdded.Invoke(newItem);
@@ -77,7 +79,7 @@ namespace VR_Prototype
 
         public void RemoveItem(int deletedItem = 0) 
         {
-            if (inventory.ContainsKey(deletedItem) && inventory[deletedItem] > 0) 
+            if (keys.Contains(deletedItem) && inventory[deletedItem] > 0) 
             {
                 inventory[deletedItem] -= 1;
             }
@@ -87,7 +89,7 @@ namespace VR_Prototype
         {
             foreach(KeyValuePair<int, int> itemQuantity in requestedItems)
             {
-                if (inventory.ContainsKey(itemQuantity.Key)) 
+                if (keys.Contains(itemQuantity.Key)) 
                 {
                     if (inventory[itemQuantity.Key] < requestedItems[itemQuantity.Key]) 
                     {

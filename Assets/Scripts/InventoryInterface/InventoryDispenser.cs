@@ -11,7 +11,7 @@ namespace VR_Prototype {
 
         protected override void Start() {
             base.Start();
-            itemType = InventoryManager.instance.AddKey();
+            InventoryManager.instance.AddKey(itemType);
             InventoryManager.instance.OnItemAdded.AddListener(StockReplenish);
         }
 
