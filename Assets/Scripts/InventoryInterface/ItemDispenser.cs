@@ -56,7 +56,6 @@ namespace VR_Prototype {
             }
             if (item == null) item = CreateItem();
             item.transform.position = transform.position;
-            item.transform.rotation = transform.rotation;
             item.enabled = true;
             item.isGrabbed = false;
             item.gameObject.SetActive(true);
