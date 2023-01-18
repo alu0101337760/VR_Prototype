@@ -40,6 +40,7 @@ namespace VR_Prototype {
         }
 
         public void DespawnItem() {
+            skipLifetime = false;
             if (!enabled) return;
             if (dispenser != null) dispenser.DespawnItem(this);
         }
@@ -64,7 +65,6 @@ namespace VR_Prototype {
                 lifetime--;
             }
             if (!isGrabbed && !DespawnProtection || skipLifetime) DespawnItem();
-            skipLifetime = false;
         }
     }
 }

@@ -131,6 +131,7 @@ namespace VR_Prototype {
 
         protected virtual void CheckDropSpace()
         {
+            Debug.Log("CheckDropSpace");
             if (EmptyDropSpace()) SpawnItem();
         }
     }

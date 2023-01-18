@@ -7,8 +7,11 @@ namespace VR_Prototype
     public class Crafter : MonoBehaviour
     {
         public RecipeList recipeList;
+        public Transform spawnPoint;
 
+        [SerializeField]
         private int numberOfItemsInCauldron;
+        [SerializeField]
         private List<int> cauldronContent;
 
         public void Start() 
@@ -27,8 +30,6 @@ namespace VR_Prototype
                 numberOfItemsInCauldron++;
                 poolItem item = collided.gameObject.GetComponent<poolItem>();
                 int id = item.id;
-                Debug.Log(collided.gameObject.name);
-                Debug.Log("Inserted item " + id);
                 cauldronContent.Add(id);
                 item.DespawnItem();
                 InventoryManager.instance.RemoveItem(id);
@@ -41,7 +42,8 @@ namespace VR_Prototype
                             break;
                         }
                     }
-                    PotionManager.instance.InstantiatePotion(0, new Vector3(-6, 2, -5), Quaternion.identity);
+                    Debug.Log("Potion: " + potion);
+                    PotionManager.instance.InstantiatePotion(0, (spawnPoint == null? transform.position + Vector3.up: spawnPoint.position), Quaternion.identity);
                     ResetCauldron();
                 }
             }
