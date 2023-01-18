@@ -365,7 +365,6 @@ MonoBehaviour:
   - {fileID: 802596658095520055}
   shotClips:
   - {fileID: 8300000, guid: bf7942de1c3e67b48bbcfb96aeac17bf, type: 3}
-  - {fileID: 8300000, guid: 988dc467df7ed17448ee6b4bf40be757, type: 3}
   shotOrigin: {fileID: 980757168}
   rb: {fileID: 0}
   vibrationAmplitude: 1
