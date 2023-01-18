@@ -254,6 +254,7 @@ MonoBehaviour:
   timeOfActivation: -1
   effectDuration: 0
   potionName: 2
+  potionEffect: {fileID: 8274376115008157300, guid: ef7d3f274ae12604a85f1aad7a8d564b, type: 3}
   lightningRange: 5
   lightningDamage: 1
 --- !u!114 &6785494381485027372

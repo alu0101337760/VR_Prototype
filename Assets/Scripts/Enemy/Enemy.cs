@@ -141,7 +141,7 @@ namespace VR_Prototype
         private void DropLogic()
         {
             int rand = Random.Range(0, 100);
-            if(rand > dropChancePercentage)
+            if(rand < dropChancePercentage)
             {
                 //TRIGGER DROP VISUALS
                 rand = Random.Range(0, ItemManager.instance.itemList.itemList.Count-1);

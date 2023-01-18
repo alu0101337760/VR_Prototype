@@ -4,7 +4,6 @@ namespace VR_Prototype
 {
     public class LightningPotion : Potion
     {
-        public int lightningRange = 5;
         public int lightningDamage = 1;
         public override void StopPotionEffect() { }
 
@@ -18,7 +17,7 @@ namespace VR_Prototype
 
                 Vector3 center = aliveEnemies[randomIndex].transform.position;
                 aliveEnemies[randomIndex].Die();
-                Collider[] collisions = Physics.OverlapSphere(center, lightningRange, 1 << 3);
+                Collider[] collisions = Physics.OverlapSphere(center, radius, 1 << 3);
 
                 for (int i = 0; i < collisions.Length; i++)
                 {
@@ -28,7 +27,6 @@ namespace VR_Prototype
             }
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             this.effectDuration = 0;

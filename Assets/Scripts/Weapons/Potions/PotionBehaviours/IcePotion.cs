@@ -15,6 +15,7 @@ namespace VR_Prototype
 
         protected override void HandlePotionEffect(Collision collision)
         {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
             Vector3 center = transform.position;
             Collider[] collisions = Physics.OverlapSphere(center, this.radius, 1 << 3);
             affectedEnemies = new Enemy[collisions.Length];

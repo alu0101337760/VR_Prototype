@@ -4,13 +4,14 @@ namespace VR_Prototype
 {
     public class SlowPotion : Potion
     {
-        public override void StopPotionEffect() {}
+        public override void StopPotionEffect() {Destroy(potionEffect);}
 
         protected override void HandlePotionEffect(Collision collision)
         {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             SphereCollider triggerZone = this.gameObject.AddComponent<SphereCollider>();
             triggerZone.isTrigger = true;
+            triggerZone.radius = this.radius;
         }
 
         private void OnTriggerEnter(Collider other)
