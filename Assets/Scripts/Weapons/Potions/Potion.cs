@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace VR_Prototype
 {
@@ -8,7 +9,7 @@ namespace VR_Prototype
         public float timeOfActivation = -1;
         public float effectDuration = 5;
         public PotionNames potionName;
-        public ParticleSystem potionEffect;
+        public VisualEffect potionEffect;
 
         private bool isTriggered = false;
 
