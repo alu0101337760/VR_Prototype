@@ -9,7 +9,7 @@ namespace VR_Prototype
         public float timeOfActivation = -1;
         public float effectDuration = 5;
         public PotionNames potionName;
-        public VisualEffect potionEffect;
+        public ParticleSystem potionEffect;
 
         private bool isTriggered = false;
 

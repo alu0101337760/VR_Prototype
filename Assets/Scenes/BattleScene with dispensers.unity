@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44402242, g: 0.49316543, b: 0.5722324, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -546,11 +546,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66b7a2002e941184898e259f6b3064f0, type: 3}
---- !u!23 &392883091 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4926919701090495460, guid: 66b7a2002e941184898e259f6b3064f0, type: 3}
-  m_PrefabInstance: {fileID: 1181378704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &476825806
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,9 +627,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedMaterial: {fileID: 2100000, guid: b102162a120e0ad48b01808d55f67f65, type: 2}
   deactivatedMaterial: {fileID: 2100000, guid: eb14e5a67a8d31a478f9878f0df73cb8, type: 2}
-  locomotionObject: {fileID: 1404482424}
-  tPVisuals: {fileID: 392883091}
-  actionBasedVisuals: {fileID: 1193330468}
+  leftButtonVisuals: {fileID: 0}
+  rightButtonVisuals: {fileID: 0}
+  onLeftButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  onRightButtonPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &549487863
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,13 +680,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSize: 32
+  spawnDelay: 1
   livingEnemies: 0
   enemyPrefab: {fileID: 5627496048627908012, guid: 083b943952841e44e8371b9f641a7649, type: 3}
   enemies: []
   interestPoints:
   - {fileID: 929815675}
   - {fileID: 1124088730}
-  spawners: 00000000
+  startSpawners: 
 --- !u!1 &574638901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,9 +1573,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: 0
-  waves: 0300000005000000080000000a0000000c000000130000001c000000
-  timeBetweenWaves: 5
   infiniteIncrement: 5
+  OnWaveEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1019081078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2006,11 +2008,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4744492070871886499, guid: 66b7a2002e941184898e259f6b3064f0, type: 3}
   m_PrefabInstance: {fileID: 1181378704}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1193330468 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4926919701090495460, guid: 66b7a2002e941184898e259f6b3064f0, type: 3}
-  m_PrefabInstance: {fileID: 789211276}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207136209
 GameObject:
@@ -2475,17 +2472,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324070385}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1404482424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4362447184592670066, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
-  m_PrefabInstance: {fileID: 5204886978647883405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1404482428 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4362447184592670065, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
   m_PrefabInstance: {fileID: 5204886978647883405}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404482424}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
