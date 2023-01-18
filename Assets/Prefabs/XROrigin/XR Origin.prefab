@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 1905867729893224792}
   - component: {fileID: 1653457808}
   - component: {fileID: 1361562430226034211}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: XR Interaction Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 5204886977039691084}
   - component: {fileID: 4480099153838501124}
   - component: {fileID: 7059195697282989840}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: XR Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,8 +285,8 @@ MonoBehaviour:
   m_Camera: {fileID: 5204886978791119559}
   m_OriginBaseGameObject: {fileID: 5204886977039691085}
   m_CameraFloorOffsetObject: {fileID: 5204886978010049043}
-  m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.76
+  m_RequestedTrackingOriginMode: 2
+  m_CameraYOffset: 1.7
 --- !u!114 &5204886977039691084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,13 +312,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1
+  m_Radius: 0.2
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.13, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7059195697282989840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,9 +331,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6bf904e410ee8479f9093d8830d1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LocomotionProvider: {fileID: 0}
+  m_LocomotionProvider: {fileID: 4362447184592670067}
   m_MinHeight: 1
-  m_MaxHeight: 2
+  m_MaxHeight: 1.6
 --- !u!1 &5204886978010049043
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5204886978010049042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Camera Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5204886978010049043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 5204886978791119556}
   - component: {fileID: 5204886978791119557}
   - component: {fileID: 5204886978791119558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2883,6 +2883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locomotion System
       objectReference: {fileID: 0}
+    - target: {fileID: 8535084406144858502, guid: e1052cba4ac171d458665c3a1482fc76, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1052cba4ac171d458665c3a1482fc76, type: 3}
 --- !u!114 &4362447184592670065 stripped
@@ -2894,6 +2898,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4362447184592670067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8535084406144858503, guid: e1052cba4ac171d458665c3a1482fc76, type: 3}
+  m_PrefabInstance: {fileID: 5402121156808537332}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2213c36610e3b1c4bbf886810ed9db12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4362447184592670070 stripped

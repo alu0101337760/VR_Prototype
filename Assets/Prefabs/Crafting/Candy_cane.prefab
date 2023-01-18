@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7599628230888933130}
   - component: {fileID: 19247456732779271}
   - component: {fileID: 6717550056172022360}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Candy_cane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5064116726456831316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

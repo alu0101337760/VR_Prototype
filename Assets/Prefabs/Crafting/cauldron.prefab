@@ -1766,7 +1766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipeList: {fileID: 11400000, guid: eb8670927b54d1947b5b4ba280d90271, type: 2}
-  inventoryManager: {fileID: 0}
 --- !u!135 &7338144440383815503
 SphereCollider:
   m_ObjectHideFlags: 0
