@@ -12,8 +12,6 @@ namespace VR_Prototype
             SphereCollider triggerZone = this.gameObject.AddComponent<SphereCollider>();
             triggerZone.isTrigger = true;
             triggerZone.radius = this.radius;
-            potionEffect = Instantiate(potionEffect, transform.position, transform.rotation); 
-            potionEffect.transform.localScale = new Vector3(radius, radius, radius);
         }
 
         private void OnTriggerEnter(Collider other)
