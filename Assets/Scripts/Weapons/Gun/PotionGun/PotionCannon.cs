@@ -21,10 +21,14 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
     public float vibrationAmplitude = 1;
     public float vibrationDuration = 1;
 
+    public AudioClip shotClip;
+
     private GameObject potionVisuals;
     private MeshRenderer potionRenderer;
+    private AudioSource audioSource;
     private void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         rb = gameObject.GetComponent<Rigidbody>();
         potionVisuals = transform.Find("PotionVisuals").gameObject;
         potionRenderer = potionVisuals.transform.Find("Potion").GetComponent<MeshRenderer>();
@@ -43,6 +47,11 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
         }
     }
 
+    public void PlaySound()
+    {
+        audioSource.PlayOneShot(shotClip);
+    }
+
     public void Shoot(ActivateEventArgs args)
     {
         if (isLoaded)
@@ -52,7 +61,7 @@ public class PotionCannon : MonoBehaviour, GunBehaviour
                 TriggerHaptic(controllerInteractor.xrController);
             }
             PlayEffects();
-
+            PlaySound();
             ///SHOOT POTION LOGIC
             GameObject shotPotion = PotionManager.instance.InstantiatePotion(loadedPotion, shotOrigin.position, shotOrigin.rotation);
             shotPotion.GetComponent<Rigidbody>().AddForce(transform.forward * muzzleVelocity, ForceMode.Impulse);
