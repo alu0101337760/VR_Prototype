@@ -468,18 +468,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  maxHealth: 1
   id: 0
   active: 0
   dying: 0
   target: {fileID: 0}
   currentTarget: {fileID: 0}
-  reach: 5
+  reach: 2
   maxSpeed: 1
   currentSpeed: 5
-  maxHealth: 1
   attackDamage: 10
   attackDelay: 1
-  dropChancePercentage: 20
+  dropChancePercentage: 75
 --- !u!114 &8053727899001787267
 MonoBehaviour:
   m_ObjectHideFlags: 0
