@@ -5281,6 +5281,7 @@ MonoBehaviour:
   vibrationAmplitude: 1
   vibrationDuration: 0.4
   alreadyShot: 0
+  timeBetweenShots: 0.9
 --- !u!114 &3003337128998557400
 MonoBehaviour:
   m_ObjectHideFlags: 0
