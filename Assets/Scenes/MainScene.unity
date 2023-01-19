@@ -907,6 +907,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486449452}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &518709304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5204886977039691085, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+  m_PrefabInstance: {fileID: 5204886978647883405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519056769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,6 +3871,30 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 3793631583153353614, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: onTeleportActivate.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793631583153353614, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: onTeleportActivate.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793631583153353614, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: onTeleportActivate.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 518709304}
+    - target: {fileID: 3793631583153353614, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: onTeleportActivate.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793631583153353614, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: onTeleportActivate.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793631583153353614, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: onTeleportActivate.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5204886977039691085, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
       propertyPath: m_Name
       value: XR Origin
@@ -3914,6 +3943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7469569727590621455, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
+      propertyPath: xRRig
+      value: 
+      objectReference: {fileID: 518709304}
     - target: {fileID: 7469569727590621455, guid: fb8e562acc7143744b6d735c0350526c, type: 3}
       propertyPath: characterController
       value: 
