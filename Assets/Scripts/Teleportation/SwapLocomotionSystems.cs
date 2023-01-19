@@ -24,8 +24,8 @@ public class SwapLocomotionSystems : MonoBehaviour
     }
 
     public void ActivateTeleportLocomotion() {
+        actionBasedContinuousMoveProvider.enabled = false;        
         characterController.enabled = false;
-        actionBasedContinuousMoveProvider.enabled = false;
         characterControllerDriver.enabled = false;
         teleportationProvider.enabled = true;
     }
