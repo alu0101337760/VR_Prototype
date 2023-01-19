@@ -69,6 +69,18 @@ namespace VR_Prototype
             }
         }
 
+        [ContextMenu("Halve Speed")]
+        public void HalveSpeed() { SlowDownEnemies(0.5f); }
+        [ContextMenu("Restore Speed")]
+        public void RestoreSpeed() { SlowDownEnemies(1f); }
+        public void SlowDownEnemies(float slowFactor)
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].active) enemies[i].SetSpeed(slowFactor);
+            }
+        }
+
         public IEnumerator SpawnWave(int enemyNumber)
         {
             queuedEnemies = enemyNumber;
