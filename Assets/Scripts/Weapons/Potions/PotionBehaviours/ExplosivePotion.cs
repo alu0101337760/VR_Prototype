@@ -7,7 +7,8 @@ namespace VR_Prototype
     public override void StopPotionEffect() { }
 
     protected override void HandlePotionEffect(Collision collision)
-    {
+    {      
+      PlayEffects();
       Vector3 center = transform.position;
       Collider[] collisions = Physics.OverlapSphere(center, this.radius, 1 << 3);
       for (int i = 0; i < collisions.Length; i++)

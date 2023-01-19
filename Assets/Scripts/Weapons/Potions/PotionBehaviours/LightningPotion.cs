@@ -16,6 +16,13 @@ namespace VR_Prototype
         int randomIndex = Random.Range(0, aliveEnemies.Length);
 
         Vector3 center = aliveEnemies[randomIndex].transform.position;
+
+        for(int i = 0; i < potionEffects.Length; i++)
+        {
+          potionEffects[i].transform.position = center;
+        }
+        PlayEffects();
+
         aliveEnemies[randomIndex].Die();
         Collider[] collisions = Physics.OverlapSphere(center, radius, 1 << 3);
 

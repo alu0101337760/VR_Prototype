@@ -32,7 +32,6 @@ namespace VR_Prototype
                 isTriggered = true;
                 this.timeOfActivation = Time.time;
                 PotionManager.instance.AddUsedPotion(this);
-                PlayEffects();
                 HandlePotionEffect(collision);
             }
         }

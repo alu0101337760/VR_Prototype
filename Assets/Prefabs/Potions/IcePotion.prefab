@@ -428,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   timeOfActivation: -1
-  effectDuration: 3
+  effectDuration: 5
   potionName: 1
   potionEffects:
   - {fileID: 2332025699621337840}

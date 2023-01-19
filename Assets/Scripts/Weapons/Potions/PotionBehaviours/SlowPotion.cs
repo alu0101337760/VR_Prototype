@@ -8,23 +8,24 @@ namespace VR_Prototype
 
     protected override void HandlePotionEffect(Collision collision)
     {
+      PlayEffects();
       this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
       SphereCollider triggerZone = this.gameObject.AddComponent<SphereCollider>();
       triggerZone.isTrigger = true;
-      triggerZone.radius = this.radius;
+      triggerZone.radius = this.radius / transform.localScale.x;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-      if (other.gameObject.layer == (1 << 3))
+      if (other.gameObject.layer == 3)
       {
-        other.GetComponent<Enemy>().SetSpeed(0.7f);
+        other.GetComponent<Enemy>().SetSpeed(0.2f);
       }
     }
 
     private void OnTriggerExit(Collider other)
     {
-      if (other.gameObject.layer == (1 << 3))
+      if (other.gameObject.layer == 3)
       {
         other.GetComponent<Enemy>().Resume();
       }
