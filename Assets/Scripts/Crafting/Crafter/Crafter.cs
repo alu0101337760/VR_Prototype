@@ -39,7 +39,7 @@ namespace VR_Prototype
                         }
                     }
                     Debug.Log("Potion: " + potion);
-                    PotionManager.instance.InstantiatePotion(0, (spawnPoint == null? transform.position + Vector3.up: spawnPoint.position), Quaternion.identity);
+                    PotionManager.instance.InstantiatePotion(potion, (spawnPoint == null? transform.position + Vector3.up: spawnPoint.position), Quaternion.identity);
                     ResetCauldron();
                 }
             }

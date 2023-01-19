@@ -39,20 +39,6 @@ namespace VR_Prototype
             return keys[Random.Range(0, keys.Count)];
         }
 
-        [ContextMenu("Add Items")]
-        public void AddItems() {
-            foreach (int i in new int[0, 1, 2, 3]) {
-                AddItem(i);
-            };
-        }
-
-        [ContextMenu("Remove Items")]
-        public void RemoveItems() {
-            foreach (int i in new int[0, 1, 2, 3]) {
-                RemoveItem(i);
-            };
-        }
-
         public void AddKey(int key) 
         {
             if(!keys.Contains(key)) {

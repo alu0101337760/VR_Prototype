@@ -59,8 +59,8 @@ Transform:
   m_GameObject: {fileID: 596416870116493210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9093779022972967008}
   m_RootOrder: 3
@@ -5447,6 +5447,18 @@ PrefabInstance:
     - target: {fileID: 3216196926821572117, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
       propertyPath: m_Name
       value: ShootVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196927121358389, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196927519767258, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216196927847816183, guid: a019bc6586b82164c9fde2bc15021716, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a019bc6586b82164c9fde2bc15021716, type: 3}

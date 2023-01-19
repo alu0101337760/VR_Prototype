@@ -51,5 +51,11 @@ namespace VR_Prototype
             Debug.Log("Game Over: " + (win ? "You Win!" : "You Lose!"));
             gameOver = true;
         }
+
+        public void Quit()
+        {
+            Debug.Log("Quitting");
+            Application.Quit();
+        }
     }
 }

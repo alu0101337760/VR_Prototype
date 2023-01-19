@@ -65,15 +65,14 @@ namespace VR_Prototype
                 }
                 PlayEffects();
                 PlaySound();
-                if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity))
-                {
+                if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity)) {
                     HitEffects.transform.position = hit.point;
                     HitEffects.Play();
-                    if (hit.transform.gameObject.layer == 3)
-                    {
-                        Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
-                        EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
-                    }
+                }
+                if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit enemyHit, Mathf.Infinity, layerMask))
+                {
+                    Debug.DrawRay(shotOrigin.position, shotOrigin.forward * enemyHit.distance, Color.red);
+                    EnemyPool.instance.EnemyHit(enemyHit.transform.gameObject.GetComponent<Enemy>().id);
                 }
                 timeOfActivation = Time.time;
                 alreadyShot = true;

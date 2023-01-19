@@ -19,7 +19,7 @@ MonoBehaviour:
   - ingredients: 00000000010000000100000003000000
     potionName: Lightning potion
     potion: 1
-  - ingredients: 01000000020000000200000002000000
+  - ingredients: 00000000020000000200000002000000
     potionName: Poison potion
     potion: 2
   - ingredients: 01000000010000000300000003000000
