@@ -8,7 +8,6 @@ namespace VR_Prototype
   {
     public int id;
     public string name;
-    //public bool instantiated;
     public Mesh mesh;
     public Material material;
     
