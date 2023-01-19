@@ -9,7 +9,7 @@ namespace VR_Prototype
     public class PistolBehaviour : MonoBehaviour,  GunBehaviour
     {
         public ParticleSystem[] particles;
-        public VisualEffect[] effects;
+        public ParticleSystem HitEffects;
 
         public AudioClip[] shotClips;
 
@@ -29,6 +29,7 @@ namespace VR_Prototype
 
         private void Awake()
         {
+            HitEffects.transform.parent = null;
             audioSource = gameObject.GetComponent<AudioSource>();
             rb = gameObject.GetComponent<Rigidbody>();
         }
@@ -43,10 +44,6 @@ namespace VR_Prototype
             for (int i = 0; i < particles.Length; i++)
             {
                 particles[i].Play();
-            }
-            for (int i = 0; i < effects.Length; i++)
-            {
-                effects[i].Play();
             }
         }
 
@@ -66,10 +63,15 @@ namespace VR_Prototype
                 }
                 PlayEffects();
                 PlaySound();
-                if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
+                if (Physics.Raycast(shotOrigin.position, shotOrigin.forward, out RaycastHit hit, Mathf.Infinity))
                 {
-                    Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
-                    EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
+                    HitEffects.transform.position = hit.point;
+                    HitEffects.Play();
+                    if (hit.transform.gameObject.layer == 3)
+                    {
+                        Debug.DrawRay(shotOrigin.position, shotOrigin.forward * hit.distance, Color.red);
+                        EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
+                    }
                 }
                 alreadyShot = true;
             // }
