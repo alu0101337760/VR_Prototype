@@ -86,4 +86,4 @@ Las siguientes tareas fueron hechas por dos o más personas:
 
 * Creación de sistemas de instanciación y pooling de objetos
 
-* 
+* Mucho debug
