@@ -72,9 +72,9 @@ Inicialmente, se realizó la siguiente división del trabajo:
 
 Adicionalmente, cada integrante llevó a cabo las siguientes tareas:
 
-* Dario Cerviño Luridiana: creación de efectos especiales
+* Dario Cerviño Luridiana: creación de efectos especiales, pooling de objetos, terreno enemigo
 
-* Enrique Viña Alonso: sistemas de armas
+* Enrique Viña Alonso: sistemas de armas, coordinación y testing
 
 * Juan Salvador Magariños Alba: modelado de los ítems, pociones y la torre, creación de shaders
 
@@ -82,8 +82,9 @@ Adicionalmente, cada integrante llevó a cabo las siguientes tareas:
 
 Las siguientes tareas fueron hechas por dos o más personas:
 
-* Creación del terreno enemigo
-
 * Creación de sistemas de instanciación y pooling de objetos
 
 * Mucho debug
+
+
+Intentamos seguir un workflow de gitflow, pero degeneró en algo más caótico.
