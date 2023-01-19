@@ -476,7 +476,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   reach: 2
   maxSpeed: 1
-  currentSpeed: 5
+  currentSpeed: 1
   attackDamage: 10
   attackDelay: 1
   dropChancePercentage: 75
