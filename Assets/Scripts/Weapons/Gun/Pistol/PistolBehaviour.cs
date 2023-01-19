@@ -22,10 +22,12 @@ namespace VR_Prototype
 
         [Space]
         public bool alreadyShot = false;
+        public float timeBetweenShots = 0.5f;
         
         
         private int layerMask = 1 << 3; // Enemigos es la layer 3
         private AudioSource audioSource;
+        private float timeOfActivation = -1;
 
         private void Awake()
         {
@@ -55,8 +57,8 @@ namespace VR_Prototype
 
         public void Shoot(ActivateEventArgs args)
         {
-            // if (!alreadyShot)
-            // {
+            if (!alreadyShot)
+            {
                 if (args.interactorObject is XRBaseControllerInteractor controllerInteractor)
                 {
                     TriggerHaptic(controllerInteractor.xrController);
@@ -73,9 +75,18 @@ namespace VR_Prototype
                         EnemyPool.instance.EnemyHit(hit.transform.gameObject.GetComponent<Enemy>().id);
                     }
                 }
+                timeOfActivation = Time.time;
                 alreadyShot = true;
-            // }
+            }
 
+        }
+
+        private void Update() {
+            if(alreadyShot) {
+                if(Time.time - timeOfActivation > timeBetweenShots) {
+                    alreadyShot = false;
+                }
+            }
         }
 
         private void TriggerHaptic(XRBaseController controller)
