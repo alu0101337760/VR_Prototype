@@ -2894,6 +2894,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8535084406144858499, guid: e1052cba4ac171d458665c3a1482fc76, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8535084406144858502, guid: e1052cba4ac171d458665c3a1482fc76, type: 3}
       propertyPath: m_Name
       value: Locomotion System
@@ -2932,6 +2936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8390700e65bf9654982c0f99fb5fab79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xRRig: {fileID: 5204886977039691085}
+  characterController: {fileID: 4480099153838501124}
+  characterControllerDriver: {fileID: 0}
 --- !u!114 &4362447184592670067 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8535084406144858503, guid: e1052cba4ac171d458665c3a1482fc76, type: 3}
