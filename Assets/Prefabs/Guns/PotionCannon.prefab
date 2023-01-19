@@ -400,8 +400,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   muzzleVelocity: 20
   vibrationAmplitude: 1
-  vibrationDuration: 1
-  shotClip: {fileID: 8300000, guid: 47208cba907a86f45a4bff783c8c2292, type: 3}
+  vibrationDuration: 0.5
+  shotClip: {fileID: 8300000, guid: f2e7103a81b87e044a2a39c3c29bbfaa, type: 3}
 --- !u!114 &-9174078367560324630
 MonoBehaviour:
   m_ObjectHideFlags: 0
