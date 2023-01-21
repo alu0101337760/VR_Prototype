@@ -26,6 +26,9 @@ La mesa principal cuenta con dos libros que invocan armas de pólvora. El de la 
 
 Frente a la torre, se encuentra el terreno que recorren los enemigos. Estos aparecen de un cilindro de color negro e intentan atacar a los cilindros de color blanco. Si consiguen destruir uno de estos, este cilindro cambia de color y se convierte en otra posible entrada de los enemigos. Si consiguen destruir todos los cilindros blancos, el jugador pierde.
 
+![WeaponExample](./gifs/WeaponExample.gif)
+![ButtonExample](./gifs/ButtonExample.gif)
+
 ## Cuestiones importantes para el uso
 
 Para adaptarse al jugador, el juego permite escoger entre dos tipos de movimiento:
