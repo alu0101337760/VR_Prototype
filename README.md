@@ -59,7 +59,7 @@ Hay muchos sistemas que consideraríamos destacables, pero es especialemente rel
 - A pesar de esto, el juego dispone de una reducida zona para el jugador, navegable mediante diferentes sistemas de movimiento cómodos en VR.
 - Acciones como disparar tienen reacciones hápticas que ayudan a la inmersión.
 
-## Distribución del trabajo (TODO)
+## Distribución del trabajo
 
 ### Reparto de tareas básico
 
