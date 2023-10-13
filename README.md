@@ -1,93 +1,79 @@
-# Prototipo de una aplicación de Realidad Virtual
+# VR Game prototype
 
-### Interfaces Inteligentes - Universidad de La Laguna
+### Authors
 
-### Autores
+This is a project for the subject Interfaces Inteligentes in Universidad de La Laguna made by: 
 
 * Dario Cerviño Luridiana (alu0101315058@ull.edu.es)
 * Enrique Viña Alonso (alu0101337760@ull.edu.es)
 * Juan Salvador Magariños Alba (alu0101352145@ull.edu.es)
 
-## Introducción
+The project is rushed because we were working on a tight time frame.
 
-El objetivo de este README es resaltar aspectos del desarrollo del prototipo que consideramos importantes para comprender el alcance del trabajo realizado, así como explicar el apartado técnico del proyecto. También actuará como un registro del trabajo realizado por cada miembro del grupo, y servirá para comprobar si los objetivos de la actividad han sido alcanzados.
+## Game description
 
-## Explicación del juego
+**Game Overview:**
+- The main loop of the game consists of defeating waves of increasing number of enemies.
+- The player initiates each wave by pressing a button when they are ready.
+- Enemies spawn from special points called "spawners" and aim to destroy certain objects near the player's tower.
+![DualWield](./gifs/dualWield.gif)
 
-El bucle principal del juego se estructura en oleadas de enemigos, siendo el jugador decide cuándo comienzan pulsando un botón. Los enemigos aparecen en puntos especiales del mapa llamados "spawners", y su objetivo es alcanzar y destruir ciertos objetos cercanos a la torre en la que está el jugador. 
+**Player Abilities:**
+- The player has a pistol to shoot enemies.
+- The player can also craft 4 different kinds of potions in between waves that can be shot with a hand cannon.
+![UsingPotions](./gifs/usingPotions.gif)
 
-Para evitar esto, el usuario puede utilizar una pistola para dispararles; pero también se le da la posibilidad de recoger objetos dejados por los monstruos derrotados para fabricar pociones en un caldero que tiene en su zona de trabajo. Concretamente, todas las pociones requieren de 4 objetos para ser preparadas. Una vez se ha hecho una poción, esta aparece en la mesa de trabajo, y el jugador puede cargarla y dispararla con un cañón acoplable al brazo.
+**Player's Workspace (Tower):**
+- The tower provides a view of the entire game map.
+- Features:
+  - Potion table with inventory access.
+  - Main table with a pistol and a potion-firing cannon.
+  - Game control panel for wave management.
+  - Movement control panel for changing movement types.
+  - An exit button.
 
-El área principal de trabajo del jugador es una torre desde la que se puede ver todo el mapa. La torre cuenta con una mesa de pociones con acceso al inventario de objetos; una mesa principal, donde aparecen la pistola y el cañón; Un panel de control de juego, para empezar una oleada o reiniciar el juego; y un panel de control de movimiento, para cambiar entre los dos tipos de movimiento disponibles. También hay un botón para salir del juego.
-
-Al matar enemigos, estos pueden otorgar materiales para pociones. Cada poción cuesta 4 ingredientes, que se pierden al entrar en el caldero. Después de cada ronda, conviene gastar estos materiales en hacer pociones para la siguiente.
-
-La mesa principal cuenta con dos libros que invocan armas de pólvora. El de la derecha, invoca hasta dos pistolas, mientras que el de la izquierda invoca un cañón para lanzar pociones. El cañón se carga poniendo la poción en la apertura.
-
-Frente a la torre, se encuentra el terreno que recorren los enemigos. Estos aparecen de un cilindro de color negro e intentan atacar a los cilindros de color blanco. Si consiguen destruir uno de estos, este cilindro cambia de color y se convierte en otra posible entrada de los enemigos. Si consiguen destruir todos los cilindros blancos, el jugador pierde.
-
-![WeaponExample](./gifs/WeaponExample.gif)
 ![ButtonExample](./gifs/ButtonExample.gif)
 
-## Cuestiones importantes para el uso
+**Resource Management:**
+- Materials for potions are obtained by defeating enemies.
+- Each potion creation consumes 4 ingredients.
+- The player can control the wave start so the crafting can be made in between waves.
 
-Para adaptarse al jugador, el juego permite escoger entre dos tipos de movimiento:
+![ThrowingStuffAtThePot](./gifs/PuttingShitOnThePot.gif)
 
-  * Movimiento basado en las acciones del jugador: en este modo, el jugador se mueve utilizando el mando. Cabe destacar que, con el objetivo de evitar que este se maree, el movimiento se realiza a velocidad constante
-  * Movimiento basado en teletransporte: como su nombre indica, al usar este modo, el jugador puede teletransportarse entre diferentes posiciones. Esto también puede ayudar a evitar que el jugador se maree, dado que evita que tenga que realizar cambios progresivos del movimiento estando quieto en la realidad
+**Weapon Summoning:**
+- Two books on the main table summon gunpowder weapons:
+  - Right book: Summons up to two pistols.
+  - Left book: Summons a potion-firing cannon.
 
-Sin embargo, independientemente del modo escogido, el jugador se puede mover en el mundo virtual si se mueve en el real. Además, también se le da la opción de rotar sobre sí mismo mediante giros "snap-based", que son rotaciones que suman siempre 45º o -45º, con el objetivo de evitar que se deba realizar un giro continuo, aunque sea a velocidad constante, evitando que el jugador se maree.
+![WeaponExample](./gifs/WeaponExample.gif)
 
-Este juego hace uso solo del botón de agarre y del gatillo. Con el agarre, el jugador puede coger objetos y lanzarlos. Con el gatillo, el jugador puede disparar.
-
-Este prototipo se desarrolló con la versión 2021.3.6f1 de Unity.
-
-## Hitos de programación logrados
-
-- Se ha hecho uso efectivo de eventos y estructuras singleton para la comunicación entre objetos.
-- Se ha hecho uso de scriptable objects para la gestión de datos.
-- Se ha hecho uso de pooling para la gestión de objetos muy repetidos (enemigos, materiales, etc).
-- Se ha hecho uso de simulaciones físicas integradas con el sistema de agarre.
-- Se han preparado Shaders y efectos de partículas satisfactorios.
-- Se han implementado mecanismos de interacción de VR (teletransporte, botones, objetos).
-
-## Aspectos destacables de la aplicación
-
-Hay muchos sistemas que consideraríamos destacables, pero es especialemente relevante destacar las decisiones de diseño y sistemas que se han desarrollado para acomodar una experiencia en realidad virtual:
-
-- El escenario está dispuesto de tal manera que no es necesario girarse con urgencia y se puede ver todo el terreno de juego.
-- A pesar de esto, el juego dispone de una reducida zona para el jugador, navegable mediante diferentes sistemas de movimiento cómodos en VR.
-- Acciones como disparar tienen reacciones hápticas que ayudan a la inmersión.
-
-## Distribución del trabajo
-
-### Reparto de tareas básico
-
-Inicialmente, se realizó la siguiente división del trabajo:
-
-* Dario Cerviño Luridiana: sistema controlador de los enemigos (algoritmo A*)
-
-* Enrique Viña Alonso: controladores
-
-* Juan Salvador Magariños Alba: sistemas de fabricación de pociones e inventario
-
-### Tareas desarrolladas individualmente
-
-Adicionalmente, cada integrante llevó a cabo las siguientes tareas:
-
-* Dario Cerviño Luridiana: creación de efectos especiales, pooling de objetos, terreno enemigo
-
-* Enrique Viña Alonso: sistemas de armas, coordinación y testing
-
-* Juan Salvador Magariños Alba: modelado de los ítems, pociones y la torre, creación de shaders
-
-### Tareas desarrolladas en grupo
-
-Las siguientes tareas fueron hechas por dos o más personas:
-
-* Creación de sistemas de instanciación y pooling de objetos
-
-* Mucho debug
+**Enemy Behavior:**
+- Enemies emerge from black cylinders and target white cylinders.
+- If an enemy destroys a white cylinder, it changes color and becomes another potential entry point.
+- The player loses if all white cylinders are destroyed.
 
 
-Intentamos seguir un workflow de gitflow, pero degeneró en algo más caótico.
+**Player Movement Options:**
+- The game offers two movement modes to cater to player preferences:
+  - **Player-Action-Based Movement:** In this mode, players use a controller for movement, with a constant speed to prevent motion sickness.
+  - **Teleportation-Based Movement:** This mode allows players to teleport to different positions within the game world, eliminating gradual movement changes while standing still to reduce motion sickness.
+
+![MovementOptions](./gifs/actionvsteleport.gif)
+
+**Movement and Rotation:**
+- Regardless of the chosen mode, real-world movements translate into virtual world movement.
+- Players have the option to rotate in increments of 45º or -45º using "snap-based" rotations, preventing continuous spinning and reducing the risk of motion sickness.
+
+**Game Controls:**
+- The game utilizes only two input actions:
+  - **Grip Button:** This button allows players to pick up objects and throw them.
+  - **Trigger Button:** Players can use the trigger button to shoot.
+
+
+**Notable Design Decisions for Virtual Reality:**
+- The game's environment is designed to minimize the need for sudden and urgent head-turning, ensuring players can comfortably view the entire game terrain.
+
+- Despite the bigger terrain where the enemies are located, the game offers a limited player area, which can be navigated using various comfortable VR movement systems.
+
+- Haptic feedback is integrated into actions like shooting, enhancing the overall sense of immersion for players.
